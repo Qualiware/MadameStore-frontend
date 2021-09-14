@@ -43,6 +43,7 @@
       </button>
       <button mat-menu-item [routerLink]="['/administracao/tipo-amigo']"
               *ngIf="securityService.hasRoles(['ROLE_TIPOAMIGO_VISUALIZAR', 'ROLE_TIPOAMIGO_PESQUISAR'])"
+
       >
         <mat-icon>assignment_ind</mat-icon>
         <span>Tipo Amigo</span>
@@ -84,11 +85,10 @@
 
         <a mat-button [routerLink]="['/administracao/tipo-produto']"
          *ngIf="securityService.hasRoles(['ROLE_TIPOPRODUTO_VISUALIZAR', 'ROLE_TIPOPRODUTO_PESQUISAR'])"
-      ></a>
+      >
         <mat-icon>assignment_ind</mat-icon>
         Tipo Produto
-
-
+      </a>
 
     </div>
   </div>

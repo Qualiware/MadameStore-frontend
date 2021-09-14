@@ -90,7 +90,7 @@ export class HomeComponent {
       const user: User = {
         id: data.id,
         name: data.nome,
-        login: data.login,
+        email: data.email,
         accessToken: data.accessToken,
         refreshToken: data.refreshToken,
         expiresIn: data.expiresIn,

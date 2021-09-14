@@ -6,7 +6,7 @@
 export interface User {
   id: number;
   name: string;
-  login: string;
+  email: string;
   accessToken: string;
   refreshToken: string;
   expiresIn: number;

@@ -66,8 +66,8 @@ export class Credential {
   /**
    * @returns login
    */
-  public get login(): string {
-    return this._user ? this._user.login : undefined;
+  public get email(): string {
+    return this._user ? this._user.email : undefined;
   }
 
   /**

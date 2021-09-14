@@ -52,15 +52,13 @@ export class NavbarComponent extends AbstractComponent {
     }
   }
 
-  if
-
   /**
    * Retorna o nome do Usuário logado na aplicação.
    *
    * @returns string
    */
   public get nomeUsuario(): string {
-    return this.securityService.credential.login + ' - ' + this.securityService.credential.userName;
+    return this.securityService.credential.email + ' - ' + this.securityService.credential.userName;
   }
 
   /**
