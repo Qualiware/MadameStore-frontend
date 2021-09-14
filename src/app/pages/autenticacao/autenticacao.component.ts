@@ -52,7 +52,7 @@ export class AutenticacaoComponent implements OnInit {
         const user: User = {
           id: data.id,
           name: data.nome,
-          login: data.login,
+          email: data.email,
           expiresIn: data.expiresIn,
           accessToken: data.accessToken,
           refreshToken: data.refreshToken,

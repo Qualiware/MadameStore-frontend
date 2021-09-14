@@ -32,8 +32,8 @@
                 <div fxLayout="column">
                   <mat-form-field >
                     <mat-label >{{'LABEL_LOGIN' | i18n}}</mat-label>
-                    <input matInput id="inputUsername" type="text" title="{{'LABEL_LOGIN' | i18n}}"
-                           name="login" required [(ngModel)]="usuarioTO.login" autocomplete="off"
+                    <input matInput id="inputEmail" type="text" title="{{'LABEL_LOGIN' | i18n}}"
+                           name="email" required [(ngModel)]="usuarioTO.email" autocomplete="off"
                            placeholder="{{'LABEL_INFORME_LOGIN' | i18n}}" maxlength="20">
                     <mat-error validationMessage [submitted]="submitted"></mat-error>
                   </mat-form-field>
