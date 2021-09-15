@@ -31,7 +31,7 @@ export class ProdutoListComponent extends AbstractComponent implements OnInit {
 
   public dataCadastro: Date = null;
 
-  public displayedColumns = ['nome', 'nomeTipoProduto', 'preco', 'dataCadastro', 'quantidade', 'vliquido', 'descricao', 'quantidadeVendida', ''];
+  public displayedColumns = ['nome', 'nomeTipoProduto', 'preco', 'dataCadastro', 'quantidade', 'vliquido', 'descricao', 'quantidadeVendida'];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 

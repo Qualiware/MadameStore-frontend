@@ -90,6 +90,7 @@
             <span>{{'LABEL_CANCELAR' | i18n}}</span>
           </a>
           <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(amigo, formAmigo, $event)"
+
                   fxFlex fxFlexOffset="1"
                   class="mat-button mat-raised-button mat-primary mat-button-base"
                   *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoIncluir()"

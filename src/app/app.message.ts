@@ -47,6 +47,14 @@ export class AppMessage implements InternacionalizacaoResource {
       LOGIN_EMAIL: 'E-mail',
       LABEL_EXPORTAR: 'Exportar',
       LABEL_SELECIONE: 'Selecione',
+      LABEL_PRECO:'Preço',
+      LABEL_QUANTIDADE:'Quantidade',
+      LABEL_PRECO_PRODUTO:'Preço do Produto',
+      LABEL_VLIQUIDO:'% Valor Líquido',
+      LABEL_QUANTIDADE_VENDIDA: 'Quantidade Vendida do Produto',
+      LABEL_DATA_CADASTRO:'Data do Cadastro',
+      LABEL_TIPO_PRODUTO: 'Tipo do Produto',
+
 
 
 

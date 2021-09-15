@@ -67,7 +67,9 @@ export class ProdutoFormComponent {
 
 
     if (this.acaoSistema.isAcaoAlterar() || this.acaoSistema.isAcaoVisualizar()) {
+
       this.produto = route.snapshot.data.produto;
+      console.log(this.produto);
     }
   }
 
@@ -80,10 +82,12 @@ export class ProdutoFormComponent {
    * @param event
    */
   public salvar(produto: any, form: NgForm, event: any) {
+    console.log(produto)
     form.onSubmit(event);
     this.submittedProduto = true;
 
     if (form.valid) {
+
       this.produtoClientService.salvar(produto).subscribe(() => {
           this.router.navigate(['/administracao/produto']);
           this.messageService.addMsgSuccess('MSG007');

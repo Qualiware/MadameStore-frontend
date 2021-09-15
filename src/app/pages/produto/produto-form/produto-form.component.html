@@ -10,7 +10,7 @@
 
   <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
 
-    <form #formPRODUTO="ngForm">
+    <form #formPRODUTO="ngForm" >
       <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
         <mat-card-title>
           <span>{{'LABEL_DADOS_PRODUTO' | i18n}}</span>
@@ -35,7 +35,7 @@
           -->
           </div>
 
-          <div fxLayout="column" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="1.7%"  fxLayoutGap.xs="7%">
             <mat-form-field fxFlex>
               <mat-label>{{'LABEL_NOME' | i18n}}</mat-label>
               <input matInput placeholder="{{'LABEL_INFORME_NOME' | i18n}}" title="{{'LABEL_NOME' | i18n}}"
@@ -46,19 +46,20 @@
             </mat-form-field>
           </div>
 
-
-         <!-- <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">-->
-          <div fxLayout="column" fxLayoutAlign.gt-xs="space-around center" fxLayout.lt-sm="column" fxLayoutGap="1.7%" fxLayoutGap.xs="7%">
-
-
-              <mat-label>{{'LABEL_PRECO_PRODUTO' | i18n}}</mat-label>
-              <input matInput placeholder="{{'LABEL_INFORME_PRECO' | i18n}}" title="{{'LABEL_PRECO_PRODUTO' | i18n}}"
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="1.7%"  fxLayoutGap.xs="7%">
+            <mat-form-field fxFlex>
+              <mat-label>{{'LABEL_PRECO' | i18n}}</mat-label>
+              <input matInput placeholder="{{'LABEL_INFORME_PRECO' | i18n}}" title="{{'LABEL_PRECO'| i18n}}"
                      [(ngModel)]="produto.preco" name="preco" required maxlength="20"
                      [disabled]="acaoSistema.isAcaoVisualizar()"
               >
               <mat-error validationMessage [submitted]="submittedProduto"></mat-error>
+            </mat-form-field>
+          </div>
 
-         </div>
+
+         <!-- <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">-->
+
 
 
             <mat-form-field fxFlex>
@@ -89,17 +90,6 @@
               <mat-label>{{'LABEL_DESCRICAO' | i18n}}</mat-label>
               <input matInput placeholder="{{'LABEL_INFORME_DESCRICAO' | i18n}}" title="{{'LABEL_DESCRICAO' | i18n}}"
                      [(ngModel)]="produto.descricao" name="descricao" required maxlength="20"
-                     [disabled]="acaoSistema.isAcaoVisualizar()"
-              >
-              <mat-error validationMessage [submitted]="submittedProduto"></mat-error>
-            </mat-form-field>
-
-
-
-            <mat-form-field fxFlex>
-              <mat-label>{{'LABEL_QUANTIDADE_VENDIDA' | i18n}}</mat-label>
-              <input matInput placeholder="{{'LABEL_INFORME_QUANTIDADEVENDIDA' | i18n}}" title="{{'LABEL_QUANTIDADE_VENDIDA' | i18n}}"
-                     [(ngModel)]="produto.quantidadeVendida" name="quantidadeVendida" required maxlength="20"
                      [disabled]="acaoSistema.isAcaoVisualizar()"
               >
               <mat-error validationMessage [submitted]="submittedProduto"></mat-error>
@@ -150,13 +140,14 @@
           >
             <span>{{'LABEL_CANCELAR' | i18n}}</span>
           </a>
-          <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(produto, formProduto, $event)"
-                  fxFlex fxFlexOffset="1"
-                  class="mat-button mat-raised-button mat-primary mat-button-base"
-                  *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoIncluir()"
-          >
-            <span>{{'LABEL_SALVAR' | i18n}}</span>
-          </button>
+          <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(produto, formPRODUTO, $event)"
+
+          fxFlex fxFlexOffset="1"
+          class="mat-button mat-raised-button mat-primary mat-button-base"
+          *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoIncluir()"
+  >
+    <span>{{'LABEL_SALVAR' | i18n}}</span>
+  </button>
         </div>
       </div>
     </mat-card-footer>

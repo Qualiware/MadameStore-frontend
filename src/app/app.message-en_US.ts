@@ -50,6 +50,7 @@ export class AppMessage implements InternacionalizacaoResource {
 
 
 
+
       // Mensagem sitema
       MSG_DESEJA_SAIR_SISTEMA: 'Deseja sair do sistema?',
 
