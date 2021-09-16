@@ -79,6 +79,7 @@ export class AmigoFormComponent {
    * @param event
    */
   public salvar(amigo: any, form: NgForm, event: any) {
+    console.log(event);
     form.onSubmit(event);
     this.submittedAmigo = true;
 
