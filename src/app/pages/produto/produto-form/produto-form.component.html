@@ -89,10 +89,10 @@
             <mat-form-field fxFlex>
               <mat-label>{{'LABEL_DESCRICAO' | i18n}}</mat-label>
               <input matInput placeholder="{{'LABEL_INFORME_DESCRICAO' | i18n}}" title="{{'LABEL_DESCRICAO' | i18n}}"
-                     [(ngModel)]="produto.descricao" name="descricao" required maxlength="20"
+                     [(ngModel)]="produto.descricao" name="descricao" maxlength="20"
                      [disabled]="acaoSistema.isAcaoVisualizar()"
               >
-              <mat-error validationMessage [submitted]="submittedProduto"></mat-error>
+
             </mat-form-field>
 
 

@@ -82,7 +82,7 @@ export class ProdutoFormComponent {
    * @param event
    */
   public salvar(produto: any, form: NgForm, event: any) {
-    console.log(produto)
+
     form.onSubmit(event);
     this.submittedProduto = true;
 

@@ -51,7 +51,7 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_QUANTIDADE:'Quantidade',
       LABEL_PRECO_PRODUTO:'Preço do Produto',
       LABEL_VLIQUIDO:'% Valor Líquido',
-      LABEL_QUANTIDADE_VENDIDA: 'Quantidade Vendida do Produto',
+      LABEL_QUANTIDADE_VENDIDA: 'Qnt. Vendida',
       LABEL_DATA_CADASTRO:'Data do Cadastro',
       LABEL_TIPO_PRODUTO: 'Tipo do Produto',
 
