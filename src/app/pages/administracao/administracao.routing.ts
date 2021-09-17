@@ -58,6 +58,13 @@ export const AdministracaoRoutes: Routes = [
           'ROLE_TIPOPRODUTO_REMOVER',
           'ROLE_TIPOPRODUTO_STATUS',
 
+          'ROLE_VENDA_INCLUIR',
+          'ROLE_VENDA_ALTERAR',
+          'ROLE_VENDA_PESQUISAR',
+          'ROLE_VENDA_VISUALIZAR',
+          'ROLE_VENDA_REMOVER',
+          'ROLE_VENDA_STATUS',
+
         ]
       }
     },
@@ -79,12 +86,14 @@ export const AdministracaoRoutes: Routes = [
         path: 'amigo', loadChildren: () => import('../amigo/amigo.module').then(m => m.AmigoModule)
       },
       {
-        path:"tipo-produto", loadChildren:()=> import('../tipo-produto/tipo-produto.module').then(m=>m.TipoProdutoModule)
+        path: 'tipo-produto', loadChildren:() => import('../tipo-produto/tipo-produto.module').then(m => m.TipoProdutoModule)
       },
       {
-        path:"produto", loadChildren:()=> import('../produto/produto.module').then(m=>m.ProdutoModule)
+        path: 'produto', loadChildren:() => import('../produto/produto.module').then(m =>m.ProdutoModule)
       },
-
+      {
+        path: 'venda', loadChildren:() => import('../venda/venda.module').then(m => m.VendaModule)
+      }
     ]
   }
 ];

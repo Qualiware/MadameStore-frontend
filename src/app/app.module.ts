@@ -31,6 +31,7 @@ import {AdministracaoModule} from './pages/administracao/administracao.module';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {getPortuguesePaginatorIntl} from './shared/component/portuguese-paginator-intl';
 
+
 /**
  * Init Locale Date.
  */
@@ -40,7 +41,7 @@ registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     AppRoutingModule,
