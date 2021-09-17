@@ -7,7 +7,7 @@ import { MaterialModule } from '../../layouts/material.module';
 
 
 import { OrderModule } from 'ngx-order-pipe';
-import { UsuarioRoutes } from './produto.routing';
+import { ProdutoRoutes } from './produto.routing';
 import { MessageModule } from '../../shared/message/message.module';
 import { ValidationModule } from '../../shared/validation/validation.module';
 import { ProdutoFormComponent } from './produto-form/produto-form.component';
@@ -33,7 +33,7 @@ import { ProdutoClientModule } from './shared/produto-client/produto-client.modu
     ValidationModule,
     ProdutoClientModule,
     NgxMaskModule.forRoot({}),
-    RouterModule.forChild(UsuarioRoutes)
+    RouterModule.forChild(ProdutoRoutes)
   ]
 })
 export class ProdutoModule { }

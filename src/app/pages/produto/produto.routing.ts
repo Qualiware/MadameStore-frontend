@@ -15,7 +15,7 @@ import { ProdutoResolve } from './shared/produto-client/produto.resolve';
  *
  * @author Guiliano Rangel (UEG)
  */
-export const UsuarioRoutes: Routes = [
+export const ProdutoRoutes: Routes = [
   {
     path: 'incluir',
     component: ProdutoFormComponent,
@@ -81,7 +81,7 @@ export const UsuarioRoutes: Routes = [
       acao: 'visualizar',
       security: {
         roles: [
-          'ROLE_USUARIO_VISUALIZAR'
+          'ROLE_PRODUTO_VISUALIZAR'
         ]
       }
     },
