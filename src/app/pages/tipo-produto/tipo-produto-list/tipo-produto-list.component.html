@@ -2,12 +2,12 @@
 
   <div fxLayout="row">
     <div fxFlex fxFlexAlign="center">
-      <span class="content__title">{{'LABEL_PESQUISAR_TIPOAMIGO' | i18n}}</span>
+      <span class="content__title">{{'LABEL_PESQUISAR_TIPOPRODUTO' | i18n}}</span>
     </div>
     <div fxFlex fxLayoutAlign="end center">
       <button class="mat-button mat-raised-button mat-accent mat-button-base"
               title="{{'LABEL_ADICIONAR_NOVO' | i18n}}" routerLink="/administracao/tipo-produto/incluir"
-              *ngIf="securityService.hasRoles('ROLE_TIPOAMIGO_INCLUIR')">
+              *ngIf="securityService.hasRoles('ROLE_TIPOPRODUTO_INCLUIR')">
         {{'LABEL_ADICIONAR_NOVO' | i18n}}
       </button>
     </div>
@@ -19,7 +19,7 @@
       <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column">
         <mat-form-field fxFlex fxFlex.gt-xs="70" fxFlex.lt-sm="100">
           <mat-label>{{'LABEL_NOME' | i18n}}</mat-label>
-          <input matInput placeholder="{{'LABEL_TIPOAMIGO_HINT' | i18n}}" title="{{'LABEL_NOME' | i18n}}"
+          <input matInput placeholder="{{'LABEL_TIPOPRODUTO_HINT' | i18n}}" title="{{'LABEL_NOME' | i18n}}"
                  [(ngModel)]="filtroDTO.nome" maxlength="100">
         </mat-form-field>
       </div>
@@ -77,20 +77,20 @@
                     <span class="mat-body-strong">{{ 'LABEL_ACOES' | i18n}} :</span>
                   </div>
                   <div fxLayout="row" fxLayoutAlign="center center">
-                    <a mat-mini-fab title="{{'LABEL_VISUALIZAR_TIPOAMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_TIPOAMIGO_VISUALIZAR')"
+                    <a mat-mini-fab title="{{'LABEL_VISUALIZAR_TIPOPRODUTO' | i18n}}" class="btn-primary"
+                       *ngIf="securityService.hasRoles('ROLE_TIPOPRODUTO_VISUALIZAR')"
                        [routerLink]="['/administracao/tipo-produto', element.id, 'visualizar']">
                       <mat-icon>search</mat-icon>
                     </a>
 
-                    <a mat-mini-fab title="{{'LABEL_ALTERAR_TIPOAMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_TIPOAMIGO_ALTERAR')"
+                    <a mat-mini-fab title="{{'LABEL_ALTERAR_TIPOPRODUTO' | i18n}}" class="btn-primary"
+                       *ngIf="securityService.hasRoles('ROLE_TIPOPRODUTO_ALTERAR')"
                        [routerLink]="['/administracao/tipo-produto', element.id, 'alterar']">
                       <mat-icon>edit</mat-icon>
                     </a>
 
-                    <a mat-mini-fab title="{{'LABEL_REMOVER_TIPOAMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_TIPOAMIGO_REMOVER')"
+                    <a mat-mini-fab title="{{'LABEL_REMOVER_TIPOPRODUTO' | i18n}}" class="btn-primary"
+                       *ngIf="securityService.hasRoles('ROLE_TIPOPRODUTO_REMOVER')"
                        (click)="remover(element)">
                       <mat-icon>close</mat-icon>
                     </a>

@@ -240,7 +240,7 @@
                       </div>
                       <div fxLayout="row" fxLayoutAlign="center center">
                         <a mat-mini-fab title="{{'LABEL_VISUALIZAR_PRODUTO' | i18n}}" class="btn-primary"
-                           *ngIf="securityService.hasRoles('ROLE_AMIGO_VISUALIZAR')"
+                           *ngIf="securityService.hasRoles('ROLE_PRODUTO_VISUALIZAR')"
                            [routerLink]="['/administracao/produto', element.id, 'visualizar']">
                           <mat-icon>search</mat-icon>
                         </a>

@@ -23,7 +23,7 @@ export const TipoProdutoRoutes: Routes = [
       acao: 'incluir',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_INCLUIR'
+          'ROLE_TIPOPRODUTO_INCLUIR'
         ]
       }
     },
@@ -37,7 +37,7 @@ export const TipoProdutoRoutes: Routes = [
     data: {
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_PESQUISAR'
+          'ROLE_TIPOPRODUTO_PESQUISAR'
         ]
       }
     },
@@ -55,7 +55,7 @@ export const TipoProdutoRoutes: Routes = [
       acao: 'alterar',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_ALTERAR'
+          'ROLE_TIPOPRODUTO_ALTERAR'
         ]
       }
     },
@@ -73,7 +73,7 @@ export const TipoProdutoRoutes: Routes = [
       acao: 'visualizar',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_VISUALIZAR'
+          'ROLE_TIPOPRODUTO_VISUALIZAR'
         ]
       }
     },
