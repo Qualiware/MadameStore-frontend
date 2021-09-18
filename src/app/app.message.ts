@@ -55,6 +55,12 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_DATA_CADASTRO:'Data do Cadastro',
       LABEL_TIPO_PRODUTO: 'Tipo do Produto',
 
+      LABEL_PESQUISAR_VENDA: 'Pesquisar Venda',
+      LABEL_VALORTOTAL: 'Valor da venda',
+      LABEL_DATAVENDA: 'Data da venda',
+      LABEL_INFORME_VALORTOTAL: 'Informe valor da venda',
+
+
 
 
 
