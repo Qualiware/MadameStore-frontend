@@ -56,48 +56,54 @@
       </button>
     </mat-menu>
 
-    <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
+    <div class="buttons" fxFlex fxLayout="column" fxLayoutAlign="start" fxHide.xs>
+      <div id="button">
       <a mat-button [routerLink]="['/administracao']">
         <mat-icon>home</mat-icon>
-        Home</a>
+        Home
+      </a>
+      </div>
+
       <a mat-button [routerLink]="['/administracao/grupo']"
          *ngIf="securityService.hasRoles(['ROLE_GRUPO_VISUALIZAR', 'ROLE_GRUPO_PESQUISAR'])"
       >
         <mat-icon>group</mat-icon>
         Grupos</a>
+
+      <div id="button">
       <a mat-button [routerLink]="['/administracao/usuario']"
          *ngIf="securityService.hasRoles(['ROLE_USUARIO_VISUALIZAR', 'ROLE_USUARIO_PESQUISAR'])"
       >
         <mat-icon>person</mat-icon>
         Usuários</a>
+      </div>
 
+      <div id="button">
         <a mat-button [routerLink]="['/administracao/produto']"
           *ngIf="securityService.hasRoles(['ROLE_PRODUTO_VISUALIZAR', 'ROLE_PRODUTO_PESQUISAR'])"
 
      >
        <mat-icon>assignment_ind</mat-icon>
        Produto</a>
+      </div>
 
-      <a mat-button [routerLink]="['/administracao/amigo']"
-         *ngIf="securityService.hasRoles(['ROLE_AMIGO_VISUALIZAR', 'ROLE_AMIGO_PESQUISAR'])"
-      >
-        <mat-icon>assignment_ind</mat-icon>
-        Amigo</a>
-
+       <div id="button">
         <a mat-button [routerLink]="['/administracao/tipo-produto']"
          *ngIf="securityService.hasRoles(['ROLE_TIPOPRODUTO_VISUALIZAR', 'ROLE_TIPOPRODUTO_PESQUISAR'])"
       >
         <mat-icon>dns</mat-icon>
         Tipo Produto
       </a>
+       </div>
 
+      <div id="button">
       <a mat-button [routerLink]="['/administracao/venda']"
          *ngIf="securityService.hasRoles(['ROLE_VENDA_VISUALIZAR', 'ROLE_VENDA_PESQUISAR'])"
       >
         <mat-icon>shopping_cart</mat-icon>
         Venda
       </a>
-
+      </div>
     </div>
   </div>
 </mat-toolbar>

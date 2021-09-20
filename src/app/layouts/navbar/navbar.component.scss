@@ -1,6 +1,28 @@
-.mat-toolbar{
-  height: 45px;
+* {
+  box-sizing: border-box;
 }
+
+.mat-toolbar{
+  height: 100%;
+  width: 160px;
+  align-items: baseline;
+}
+
+.mat-button {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#button {
+  border-bottom: 1px solid black;
+  width: 160px;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  margin-left: -30px;
+}
+
 div.imagem1{
   content:url(http://www.w3.org/2000/svg);
 }
