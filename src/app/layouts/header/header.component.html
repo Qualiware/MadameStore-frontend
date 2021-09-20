@@ -10,19 +10,26 @@
       <div fxLayout="row">
         <div  fxLayoutAlign="start center" >
           <a routerLink="/administracao" href="javascript:void(0)" title="{{'TITLE_SISTEMA_NOME' | i18n}}">
-            <img fxHide.xs="true" fxHide.sm="true"
-              src="assets/img/layout_set_logo.png" width="300" alt="{{'TITLE_SISTEMA_NOME' | i18n}}"
-                 title="{{'TITLE_SISTEMA_NOME' | i18n}}">
-            <img fxHide.md="true" fxHide.lg="true" fxHide.xl="true"
-                 src="assets/img/layout_set_logo_min.png" width="60" alt="{{'TITLE_SISTEMA_NOME' | i18n}}"
-                 title="{{'TITLE_SISTEMA_NOME' | i18n}}">
+            <h1 fxHide.xs="true" fxHide.sm="true"
+              width="300"
+              >
+              <a routerLink="/administracao" href="javascript:void(0)" title="{{'TITLE_SISTEMA_NOME' | i18n}}">
+                {{'TITLE_SISTEMA_NOME' | i18n}}
+              </a>
+
+              </h1>
+            <h1 fxHide.md="true" fxHide.lg="true" fxHide.xl="true"
+                 width="60"
+                 >
+              <a routerLink="/administracao" href="javascript:void(0)" title="{{'TITLE_SISTEMA_NOME' | i18n}}">
+                {{'TITLE_SISTEMA_NOME' | i18n}}
+              </a>
+            </h1>
           </a>
         </div>
         <div fxLayoutAlign="start center">
           <h1 class="ml-2">
-          <a routerLink="/administracao" href="javascript:void(0)" title="{{'TITLE_SISTEMA_NOME' | i18n}}">
-            {{'TITLE_SISTEMA_NOME' | i18n}}
-          </a>
+
           </h1>
         </div>
       </div>

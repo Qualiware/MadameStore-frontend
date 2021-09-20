@@ -69,7 +69,7 @@ export class AppMessage implements InternacionalizacaoResource {
 
       TITLE_TODOS_OS_MEUS_SISTEMA: 'Todos os meus sistemas',
       TITLE_ADMINISTRADOR: 'Administrador',
-      TITLE_SISTEMA_NOME: 'Sistema Exemplo',
+      TITLE_SISTEMA_NOME: 'MadameStore',
 
       TITLE_SISTEMA_ORGAO_NOME: 'Secretaria de Segurança Pública',
 
