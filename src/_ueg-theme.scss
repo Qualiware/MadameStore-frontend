@@ -33,6 +33,7 @@ $app-theme: mat-light-theme($primary, $accent);
 
 
 $ueg-color-dark: #FBD7BF;
+;
 $ueg-color-light: #FBD7BF;
 //$theme-background: radial-gradient( circle,$ueg-color-light, $ueg-color-dark);
 $theme-background: radial-gradient( circle,mat-color($primary,100), mat-color($primary,200));
