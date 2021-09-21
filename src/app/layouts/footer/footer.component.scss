@@ -1,9 +1,19 @@
-@import '../../../ueg-theme';
+@import "../../../ueg-theme";
 
 .footer {
   background-image: $theme-background;
   color: white;
-  background-color: #000000;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  align-items: center;
+}
+
+.footer-span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span {
+  text-align: center;
 }
