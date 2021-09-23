@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="container" *ngIf="isAdministracao">
-<!-- <div class="imagem1"></div>
+  <!-- <div class="imagem1"></div>
 
 <div class="itemsMenu" ng-mouseover="playAudio()"><i class="fas fa-users"></i></div>
 
@@ -9,102 +9,186 @@
 </svg>
 -->
 
-
-
-
-  <div class="container d-block"
-       fxFlex.gt-xs="{{ FX_FLEX_GT_XS }}"
-       fxFlex.gt-sm="{{ FX_FLEX_GT_SM }}"
-       fxFlex.gt-md="{{ FX_FLEX_GT_MD }}"
-       fxFlex.gt-lg="{{ FX_FLEX_GT_LG }}"
-       fxFlex.xl="{{ FX_FLEX_XL }}" >
+  <div
+    class="container d-block"
+    fxFlex.gt-xs="{{ FX_FLEX_GT_XS }}"
+    fxFlex.gt-sm="{{ FX_FLEX_GT_SM }}"
+    fxFlex.gt-md="{{ FX_FLEX_GT_MD }}"
+    fxFlex.gt-lg="{{ FX_FLEX_GT_LG }}"
+    fxFlex.xl="{{ FX_FLEX_XL }}"
+  >
     <div fxHide.gt-xs>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
 
-    <mat-menu #menu="matMenu" [overlapTrigger]="false" >
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
       <button mat-menu-item [routerLink]="['/administracao']">
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </button>
-      <button mat-menu-item [routerLink]="['/administracao/grupo']"
-              *ngIf="securityService.hasRoles(['ROLE_GRUPO_VISUALIZAR', 'ROLE_GRUPO_PESQUISAR'])"
+      <button
+        mat-menu-item
+        [routerLink]="['/administracao/grupo']"
+        *ngIf="
+          securityService.hasRoles([
+            'ROLE_GRUPO_VISUALIZAR',
+            'ROLE_GRUPO_PESQUISAR'
+          ])
+        "
       >
         <mat-icon>group</mat-icon>
-        <span>{{ 'LABEL_GRUPO' | i18n}}</span>
+        <span>{{ "LABEL_GRUPO" | i18n }}</span>
       </button>
-      <button mat-menu-item [routerLink]="['/administracao/usuario']"
-              *ngIf="securityService.hasRoles(['ROLE_USUARIO_VISUALIZAR', 'ROLE_USUARIO_PESQUISAR'])"
+      <button
+        mat-menu-item
+        [routerLink]="['/administracao/usuario']"
+        *ngIf="
+          securityService.hasRoles([
+            'ROLE_USUARIO_VISUALIZAR',
+            'ROLE_USUARIO_PESQUISAR'
+          ])
+        "
       >
         <mat-icon>person</mat-icon>
         <span>Usuários</span>
       </button>
-      <button mat-menu-item [routerLink]="['/administracao/tipo-amigo']"
-              *ngIf="securityService.hasRoles(['ROLE_TIPOAMIGO_VISUALIZAR', 'ROLE_TIPOAMIGO_PESQUISAR'])"
-
+      <button
+        mat-menu-item
+        [routerLink]="['/administracao/tipo-amigo']"
+        *ngIf="
+          securityService.hasRoles([
+            'ROLE_TIPOAMIGO_VISUALIZAR',
+            'ROLE_TIPOAMIGO_PESQUISAR'
+          ])
+        "
       >
         <mat-icon>assignment_ind</mat-icon>
         <span>Tipo Amigo</span>
       </button>
-      <button mat-menu-item [routerLink]="['/administracao/amigo']"
-              *ngIf="securityService.hasRoles(['ROLE_AMIGO_VISUALIZAR', 'ROLE_AMIGO_PESQUISAR'])"
+      <button
+        mat-menu-item
+        [routerLink]="['/administracao/amigo']"
+        *ngIf="
+          securityService.hasRoles([
+            'ROLE_AMIGO_VISUALIZAR',
+            'ROLE_AMIGO_PESQUISAR'
+          ])
+        "
       >
         <mat-icon>assignment_ind</mat-icon>
         <span>Amigo</span>
       </button>
     </mat-menu>
 
-    <div class="buttons" fxFlex fxLayout="column" fxLayoutAlign="start" fxHide.xs>
+    <div
+      class="buttons"
+      fxFlex
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxHide.xs
+    >
       <div id="button">
-      <a mat-button [routerLink]="['/administracao']">
-        <mat-icon>home</mat-icon>
-        Home
-      </a>
+        <a mat-button [routerLink]="['/administracao']">
+          <mat-icon>home</mat-icon>
+          Home
+        </a>
       </div>
 
-      <a mat-button [routerLink]="['/administracao/grupo']"
-         *ngIf="securityService.hasRoles(['ROLE_GRUPO_VISUALIZAR', 'ROLE_GRUPO_PESQUISAR'])"
+      <a
+        mat-button
+        [routerLink]="['/administracao/grupo']"
+        *ngIf="
+          securityService.hasRoles([
+            'ROLE_GRUPO_VISUALIZAR',
+            'ROLE_GRUPO_PESQUISAR'
+          ])
+        "
       >
         <mat-icon>group</mat-icon>
-        Grupos</a>
+        Grupos</a
+      >
 
       <div id="button">
-      <a mat-button [routerLink]="['/administracao/usuario']"
-         *ngIf="securityService.hasRoles(['ROLE_USUARIO_VISUALIZAR', 'ROLE_USUARIO_PESQUISAR'])"
-      >
-        <mat-icon>person</mat-icon>
-        Usuários</a>
+        <a
+          mat-button
+          [routerLink]="['/administracao/usuario']"
+          *ngIf="
+            securityService.hasRoles([
+              'ROLE_USUARIO_VISUALIZAR',
+              'ROLE_USUARIO_PESQUISAR'
+            ])
+          "
+        >
+          <mat-icon>person</mat-icon>
+          Usuários</a
+        >
       </div>
 
       <div id="button">
-        <a mat-button [routerLink]="['/administracao/produto']"
-          *ngIf="securityService.hasRoles(['ROLE_PRODUTO_VISUALIZAR', 'ROLE_PRODUTO_PESQUISAR'])"
-
-     >
-       <mat-icon>assignment_ind</mat-icon>
-       Produto</a>
+        <a
+          mat-button
+          [routerLink]="['/administracao/produto']"
+          *ngIf="
+            securityService.hasRoles([
+              'ROLE_PRODUTO_VISUALIZAR',
+              'ROLE_PRODUTO_PESQUISAR'
+            ])
+          "
+        >
+          <mat-icon>assignment_ind</mat-icon>
+          Produto</a
+        >
       </div>
 
-       <div id="button">
-        <a mat-button [routerLink]="['/administracao/tipo-produto']"
-         *ngIf="securityService.hasRoles(['ROLE_TIPOPRODUTO_VISUALIZAR', 'ROLE_TIPOPRODUTO_PESQUISAR'])"
-      >
-        <mat-icon>dns</mat-icon>
-        Tipo Produto
-      </a>
-       </div>
+      <div id="button">
+        <a
+          mat-button
+          [routerLink]="['/administracao/tipo-produto']"
+          *ngIf="
+            securityService.hasRoles([
+              'ROLE_TIPOPRODUTO_VISUALIZAR',
+              'ROLE_TIPOPRODUTO_PESQUISAR'
+            ])
+          "
+        >
+          <mat-icon>dns</mat-icon>
+          Tipo Produto
+        </a>
+      </div>
 
       <div id="button">
-      <a mat-button [routerLink]="['/administracao/venda']"
-         *ngIf="securityService.hasRoles(['ROLE_VENDA_VISUALIZAR', 'ROLE_VENDA_PESQUISAR'])"
-      >
-        <mat-icon>shopping_cart</mat-icon>
-        Venda
-      </a>
+        <a
+          mat-button
+          [routerLink]="['/administracao/venda']"
+          *ngIf="
+            securityService.hasRoles([
+              'ROLE_VENDA_VISUALIZAR',
+              'ROLE_VENDA_PESQUISAR'
+            ])
+          "
+        >
+          <mat-icon>shopping_cart</mat-icon>
+          Venda
+        </a>
+      </div>
+
+      <div id="button">
+        <a
+          mat-button
+          [routerLink]="['/administracao/cliente']"
+          *ngIf="
+            securityService.hasRoles([
+              'ROLE_CLIENTE_VISUALIZAR',
+              'ROLE_CLIENTE_PESQUISAR'
+            ])
+          "
+        >
+          <mat-icon>person</mat-icon>
+          Cliente
+        </a>
       </div>
     </div>
   </div>
 </mat-toolbar>
-
