@@ -1,16 +1,16 @@
 /* tslint:disable:no-redundant-jsdoc */
-import { NgForm } from '@angular/forms';
-import { Component, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { NgForm } from "@angular/forms";
+import { Component, ViewChild } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { MatTableDataSource } from "@angular/material/table";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 
-import { TipoUsuario } from 'src/app/shared/app.constantes';
-import { MessageService } from '../../../shared/message/message.service';
-import { AcaoSistema } from '../../../shared/component/acao-sistema.acao';
-import { SecurityService } from '../../../shared/security/security.service';
-import { UsuarioClientService } from '../shared/usuario-client/usuario-client.service';
-import { GrupoClientService } from '../../grupo/shared/grupo-client/grupo-client.service';
+import { TipoUsuario } from "src/app/shared/app.constantes";
+import { MessageService } from "../../../shared/message/message.service";
+import { AcaoSistema } from "../../../shared/component/acao-sistema.acao";
+import { SecurityService } from "../../../shared/security/security.service";
+import { UsuarioClientService } from "../shared/usuario-client/usuario-client.service";
+import { GrupoClientService } from "../../grupo/shared/grupo-client/grupo-client.service";
 
 /**
  * Componente de formulário de Usuário.
@@ -18,12 +18,11 @@ import { GrupoClientService } from '../../grupo/shared/grupo-client/grupo-client
  * @author Guiliano Rangel (UEG)
  */
 @Component({
-  selector: 'app-usuario-form',
-  templateUrl: './usuario-form.component.html',
-  styleUrls: ['./usuario-form.component.scss']
+  selector: "app-usuario-form",
+  templateUrl: "./usuario-form.component.html",
+  styleUrls: ["./usuario-form.component.scss"],
 })
 export class UsuarioFormComponent {
-
   public acaoSistema: AcaoSistema;
 
   public usuario: any;
@@ -40,8 +39,8 @@ export class UsuarioFormComponent {
 
   public displayedColumns: any;
 
-  @ViewChild('formUsuario', { static: true }) formUsuario: NgForm;
-  @ViewChild('formGrupo', { static: true }) formGrupo: NgForm;
+  @ViewChild("formUsuario", { static: true }) formUsuario: NgForm;
+  @ViewChild("formGrupo", { static: true }) formGrupo: NgForm;
 
   /**
    * Construtor da classe.
@@ -67,9 +66,9 @@ export class UsuarioFormComponent {
     this.dataSourceGrupos = new MatTableDataSource<any>();
 
     if (this.acaoSistema.isAcaoVisualizar()) {
-      this.displayedColumns = ['nomeGrupoVinculado'];
+      this.displayedColumns = ["nomeGrupoVinculado"];
     } else {
-      this.displayedColumns = ['nomeGrupoVinculado', 'remover'];
+      this.displayedColumns = ["nomeGrupoVinculado", "remover"];
     }
 
     if (this.acaoSistema.isAcaoIncluir()) {
@@ -82,7 +81,7 @@ export class UsuarioFormComponent {
       // Inicializa o Usuário para Inclusão
       this.usuario = {
         idTipo: TipoUsuario.SERVIDOR_INTERNO.id,
-        grupos: []
+        grupos: [],
       };
     }
 
@@ -91,14 +90,16 @@ export class UsuarioFormComponent {
       this.carregarGrupos();
     }
 
-    if (this.acaoSistema.isAcaoAlterar() || this.acaoSistema.isAcaoVisualizar()) {
+    if (
+      this.acaoSistema.isAcaoAlterar() ||
+      this.acaoSistema.isAcaoVisualizar()
+    ) {
       this.usuario = route.snapshot.data.usuario;
       this.telefonesUsuario = this.usuario.telefones;
       this.gruposVinculados = this.usuario.grupos;
       this.dataSourceGrupos.data = this.gruposVinculados;
     }
   }
-
 
   /**
    * Carrega os Grupos pelo id do Sistema.
@@ -107,12 +108,12 @@ export class UsuarioFormComponent {
    */
   public carregarGrupos(): void {
     this.grupoClientService.getGruposAtivos().subscribe(
-      data => {
+      (data) => {
         this.grupos = data;
       },
-      error => {
+      (error) => {
         this.grupos = undefined;
-        if (error.code !== 'ME003') {
+        if (error.code !== "ME003") {
           this.messageService.addMsgDanger(error);
         }
       }
@@ -132,9 +133,10 @@ export class UsuarioFormComponent {
     this.submittedGrupo = true;
 
     if (form.valid) {
-
       // Busca o Grupo a ser adicionado na lista
-      const grupoVinculado = this.gruposVinculados.find(grupo => grupo.idGrupo === grupoInclusao.grupo.id);
+      const grupoVinculado = this.gruposVinculados.find(
+        (grupo) => grupo.idGrupo === grupoInclusao.grupo.id
+      );
 
       // Verifica se o Grupo foi encontrado
       if (grupoVinculado === undefined) {
@@ -142,13 +144,13 @@ export class UsuarioFormComponent {
           idUsuario: this.usuario.id,
           idGrupo: grupoInclusao.grupo.id,
           nomeGrupo: grupoInclusao.grupo.nome,
-          nomeSistemaGrupo: grupoInclusao.grupo.nomeSistema
+          nomeSistemaGrupo: grupoInclusao.grupo.nomeSistema,
         });
         this.dataSourceGrupos.data = this.gruposVinculados;
         form.onReset();
         this.grupoInclusao = {};
       } else {
-        this.messageService.addMsgDanger('MSG011');
+        this.messageService.addMsgDanger("MSG011");
       }
     }
   }
@@ -159,11 +161,11 @@ export class UsuarioFormComponent {
    * @param grupo
    */
   public removerGrupo(grupo: any) {
-    this.messageService.addConfirmYesNo('MSG006', () => {
+    this.messageService.addConfirmYesNo("MSG006", () => {
       const index = this.gruposVinculados.indexOf(grupo);
       this.gruposVinculados.splice(index, 1);
       this.dataSourceGrupos.data = this.gruposVinculados;
-      this.messageService.addMsgSuccess('MSG007');
+      this.messageService.addMsgSuccess("MSG007");
     });
   }
 
@@ -183,17 +185,20 @@ export class UsuarioFormComponent {
         usuario.grupos = this.gruposVinculados;
         usuario.telefones = this.telefonesUsuario;
 
-        this.usuarioClientService.salvar(usuario).subscribe(() => {
-          this.router.navigate(['/administracao/usuario']);
-          this.messageService.addMsgSuccess('MSG007');
-        }, error => {
-          this.messageService.addMsgDanger(error);
-        });
+        this.usuarioClientService.salvar(usuario).subscribe(
+          () => {
+            this.router.navigate(["/administracao/usuario"]);
+            this.messageService.addMsgSuccess("MSG007");
+          },
+          (error) => {
+            this.messageService.addMsgDanger(error);
+          }
+        );
       } else {
-        this.messageService.addMsgSuccess('MSG039');
+        this.messageService.addMsgSuccess("MSG039");
       }
     } else {
-      this.messageService.addMsgSuccess('MSG001');
+      this.messageService.addMsgSuccess("MSG001");
     }
   }
 
@@ -225,16 +230,23 @@ export class UsuarioFormComponent {
    * @param usuario
    */
   private ativar(usuario: any): void {
-    this.messageService.addConfirmYesNo('MSG034', () => {
-      this.usuarioClientService.ativar(usuario.id).subscribe(() => {
-        this.messageService.addMsgSuccess('MSG007');
-      }, error => {
+    this.messageService.addConfirmYesNo(
+      "MSG034",
+      () => {
+        this.usuarioClientService.ativar(usuario.id).subscribe(
+          () => {
+            this.messageService.addMsgSuccess("MSG007");
+          },
+          (error) => {
+            usuario.status = false;
+            this.messageService.addMsgDanger(error);
+          }
+        );
+      },
+      () => {
         usuario.status = false;
-        this.messageService.addMsgDanger(error);
-      });
-    }, () => {
-      usuario.status = false;
-    });
+      }
+    );
   }
 
   /**
@@ -243,16 +255,23 @@ export class UsuarioFormComponent {
    * @param usuario
    */
   private inativar(usuario: any): void {
-    this.messageService.addConfirmYesNo('MSG033', () => {
-      this.usuarioClientService.inativar(usuario.id).subscribe(() => {
-        this.messageService.addMsgSuccess('MSG007');
-      }, error => {
+    this.messageService.addConfirmYesNo(
+      "MSG033",
+      () => {
+        this.usuarioClientService.inativar(usuario.id).subscribe(
+          () => {
+            this.messageService.addMsgSuccess("MSG007");
+          },
+          (error) => {
+            usuario.status = true;
+            this.messageService.addMsgDanger(error);
+          }
+        );
+      },
+      () => {
         usuario.status = true;
-        this.messageService.addMsgDanger(error);
-      });
-    }, () => {
-      usuario.status = true;
-    });
+      }
+    );
   }
 
   /**
@@ -262,13 +281,13 @@ export class UsuarioFormComponent {
     let confirmed = false;
 
     if (this.acaoSistema.isAcaoVisualizar()) {
-      this.router.navigateByUrl('/administracao/usuario');
+      this.router.navigateByUrl("/administracao/usuario");
       confirmed = true;
     }
 
-    if ( !confirmed ) {
-      this.messageService.addConfirmYesNo('MSG010', () => {
-        this.router.navigateByUrl('/administracao/usuario');
+    if (!confirmed) {
+      this.messageService.addConfirmYesNo("MSG010", () => {
+        this.router.navigateByUrl("/administracao/usuario");
       });
     }
   }
@@ -288,10 +307,15 @@ export class UsuarioFormComponent {
       delete this.usuario.cpf;
     } else {
       // Verifica se o CPF informado é válido e se está em uso
-      this.usuarioClientService.validarCpf(this.usuario.cpf, this.usuario.id).subscribe(() => {}, error => {
-        delete this.usuario.cpf;
-        this.messageService.addMsgDanger(error);
-      });
+      this.usuarioClientService
+        .validarCpf(this.usuario.cpf, this.usuario.id)
+        .subscribe(
+          () => {},
+          (error) => {
+            delete this.usuario.cpf;
+            this.messageService.addMsgDanger(error);
+          }
+        );
     }
   }
 }
