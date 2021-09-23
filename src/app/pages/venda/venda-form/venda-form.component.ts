@@ -1,3 +1,5 @@
+import { ItemVendaClientService } from './../../../shared/services/item-venda-client/item-venda-client.service';
+
 /* tslint:disable:no-redundant-jsdoc */
 import { NgForm } from "@angular/forms";
 import { Component, ViewChild } from "@angular/core";
@@ -9,7 +11,8 @@ import { MessageService } from "../../../shared/message/message.service";
 import { AcaoSistema } from "../../../shared/component/acao-sistema.acao";
 import { SecurityService } from "../../../shared/security/security.service";
 import { VendaClientService } from "../shared/venda-client/venda-client.service";
-import { GrupoClientService } from "../../grupo/shared/grupo-client/grupo-client.service";
+import { ProdutoClientService } from "../../produto/shared/produto-client/produto-client.service";
+
 
 /**
  * Componente de formulário de Usuário.
@@ -26,20 +29,22 @@ export class VendaFormComponent {
 
   public venda: any;
   public telefonesVenda: any[];
-  public grupoInclusao: any;
-  public gruposVinculados: any[];
-  public grupos: any[];
+  public produtoInclusao: any;
+  public produtosVinculados: any[];
+  public produtos: any[];
   public submittedVenda: boolean;
-  public submittedGrupo: boolean;
+  public submittedProduto: boolean;
+  public valorVenda?: Number;
 
+  public itemVendas:any[];
   private dialogRef: MatDialogRef<any>;
 
-  public dataSourceGrupos: MatTableDataSource<any>;
+  public dataSourceProdutos: MatTableDataSource<any>;
 
   public displayedColumns: any;
 
   @ViewChild("formVenda", { static: true }) formVenda: NgForm;
-  @ViewChild("formGrupo", { static: true }) formGrupo: NgForm;
+  @ViewChild("formProduto", { static: true }) formProduto: NgForm;
 
   /**
    * Construtor da classe.
@@ -49,7 +54,7 @@ export class VendaFormComponent {
    * @param dialog
    * @param messageService
    * @param securityService
-   * @param grupoClientService
+   * @param produtoClientService
    * @param vendaClientService
    */
   constructor(
@@ -58,34 +63,37 @@ export class VendaFormComponent {
     private dialog: MatDialog,
     private messageService: MessageService,
     public securityService: SecurityService,
-    private grupoClientService: GrupoClientService,
-    private vendaClientService: VendaClientService
+    private produtoClientService: ProdutoClientService,
+    private vendaClientService: VendaClientService,
+    public itemVenda: ItemVendaClientService
   ) {
     this.acaoSistema = new AcaoSistema(route);
-    this.dataSourceGrupos = new MatTableDataSource<any>();
+    this.dataSourceProdutos = new MatTableDataSource<any>();
+    this.itemVendas=route.snapshot.data.itemVendas;
 
     if (this.acaoSistema.isAcaoVisualizar()) {
-      this.displayedColumns = ["nomeGrupoVinculado"];
+      this.displayedColumns = ["nomeProdutoVinculado","valorProduto","quantidade","valorTotal"];
     } else {
-      this.displayedColumns = ["nomeGrupoVinculado", "remover"];
+      this.displayedColumns = ["nomeProdutoVinculado", "valorProduto","quantidade", "remover"];
     }
 
     if (this.acaoSistema.isAcaoIncluir()) {
-      this.telefonesVenda = [];
-      this.grupoInclusao = {};
-      this.gruposVinculados = [];
-      this.dataSourceGrupos.data = this.gruposVinculados;
-      this.carregarGrupos();
+      this.produtoInclusao = {};
+      this.produtosVinculados = [];
+      this.dataSourceProdutos.data = this.produtosVinculados;
+
+      this.carregarProdutos();
 
       // Inicializa o Usuário para Inclusão
       this.venda = {
-        grupos: [],
+
+        produtos: [],
       };
     }
 
     if (this.acaoSistema.isAcaoAlterar()) {
-      this.grupoInclusao = {};
-      this.carregarGrupos();
+      this.produtoInclusao = {};
+      this.carregarProdutos();
     }
 
     if (
@@ -93,60 +101,67 @@ export class VendaFormComponent {
       this.acaoSistema.isAcaoVisualizar()
     ) {
       this.venda = route.snapshot.data.venda;
-      this.telefonesVenda = this.venda.telefones;
-      this.gruposVinculados = this.venda.grupos;
-      this.dataSourceGrupos.data = this.gruposVinculados;
+      this.produtosVinculados = this.venda.itemVenda;
+      this.dataSourceProdutos.data = this.produtosVinculados;
     }
   }
 
   /**
-   * Carrega os Grupos pelo id do Sistema.
+   * Carrega os Produtos pelo id do Sistema.
    *
    * @param idSistema
    */
-  public carregarGrupos(): void {
-    this.grupoClientService.getGruposAtivos().subscribe(
+  public carregarProdutos(): void {
+    this.produtoClientService.getProdutosAtivos().subscribe(
       (data) => {
-        this.grupos = data;
+        this.produtos = data;
       },
       (error) => {
-        this.grupos = undefined;
+        this.produtos = undefined;
         if (error.code !== "ME003") {
           this.messageService.addMsgDanger(error);
         }
       }
     );
-    delete this.grupoInclusao.grupo;
+    delete this.produtoInclusao.produto;
   }
 
   /**
-   * Adicionar o Grupo à lista de Grupos do Usuário.
+   * Adicionar o Produto à lista de Produtos do Usuário.
    *
-   * @param grupoInclusao
+   * @param produtoInclusao
    * @param form
    * @param event
    */
-  public adicionarGrupo(grupoInclusao: any, form: NgForm, event: any): void {
+  public adicionarProduto(produtoInclusao: any, form: NgForm, event: any): void {
     form.onSubmit(event);
-    this.submittedGrupo = true;
+    this.submittedProduto = true;
 
     if (form.valid) {
-      // Busca o Grupo a ser adicionado na lista
-      const grupoVinculado = this.gruposVinculados.find(
-        (grupo) => grupo.idGrupo === grupoInclusao.grupo.id
+      // Busca o Produto a ser adicionado na lista
+      const produtoVinculado = this.produtosVinculados.find(
+        (produto) => produto.idProduto === produtoInclusao.produto.id
       );
-
-      // Verifica se o Grupo foi encontrado
-      if (grupoVinculado === undefined) {
-        this.gruposVinculados.push({
+      if(this.venda.valor){
+        this.valorVenda =+ Number(this.venda.valorTotal);
+      }
+      // Verifica se o Produto foi encontrado
+      if (produtoVinculado === undefined) {
+        this.produtosVinculados.push({
           idVenda: this.venda.id,
-          idGrupo: grupoInclusao.grupo.id,
-          nomeGrupo: grupoInclusao.grupo.nome,
-          nomeSistemaGrupo: grupoInclusao.grupo.nomeSistema,
+          idProduto: produtoInclusao.produto.id,
+
+          preco: produtoInclusao.produto.preco,
+          nomeProduto: produtoInclusao.produto.nome,
+          quantidade: this.itemVendas,
+          valorTotal:this.valorVenda,
+          nomeSistemaProduto: produtoInclusao.produto.nomeSistema,
+
         });
-        this.dataSourceGrupos.data = this.gruposVinculados;
+        console.log(produtoInclusao.produto.valorProduto);
+        this.dataSourceProdutos.data = this.produtosVinculados;
         form.onReset();
-        this.grupoInclusao = {};
+        this.produtoInclusao = {};
       } else {
         this.messageService.addMsgDanger("MSG011");
       }
@@ -154,15 +169,15 @@ export class VendaFormComponent {
   }
 
   /**
-   * Remove o Grupo da lista de grupos do Usuário.
+   * Remove o Produto da lista de produtos do Usuário.
    *
-   * @param grupo
+   * @param produto
    */
-  public removerGrupo(grupo: any) {
+  public removerProduto(produto: any) {
     this.messageService.addConfirmYesNo("MSG006", () => {
-      const index = this.gruposVinculados.indexOf(grupo);
-      this.gruposVinculados.splice(index, 1);
-      this.dataSourceGrupos.data = this.gruposVinculados;
+      const index = this.produtosVinculados.indexOf(produto);
+      this.produtosVinculados.splice(index, 1);
+      this.dataSourceProdutos.data = this.produtosVinculados;
       this.messageService.addMsgSuccess("MSG007");
     });
   }
@@ -174,14 +189,13 @@ export class VendaFormComponent {
    * @param form
    * @param event
    */
-  public salvar(venda: any, form: NgForm, event: any) {
+  public salvar(venda: any,produto:any, form: NgForm, event: any) {
     form.onSubmit(event);
     this.submittedVenda = true;
 
     if (form.valid) {
-      if (this.gruposVinculados.length > 0) {
-        venda.grupos = this.gruposVinculados;
-        venda.telefones = this.telefonesVenda;
+      if (this.produtosVinculados.length > 0) {
+        venda.itemVenda = this.produtosVinculados;
 
         this.vendaClientService.salvar(venda).subscribe(
           () => {
@@ -209,23 +223,8 @@ export class VendaFormComponent {
     this.venda.tipo = event.value;
   }
 
-  /**
-   * Altera o status do Usuário informado.
-   *
-   * @param venda
-   */
 
-  /**
-   * Ativa o Usuário informado.
-   *
-   * @param venda
-   */
 
-  /**
-   * Inativa o Usuário informado.
-   *
-   * @param venda
-   */
 
   /**
    * Confirma o cancelamento e volta para a tela de Pesquisa.
@@ -252,7 +251,5 @@ export class VendaFormComponent {
     this.dialogRef.close();
   }
 
-  /**
-   * Verifica se o CPF informado é válido.
-   */
+
 }

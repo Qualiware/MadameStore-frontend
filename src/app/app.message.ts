@@ -140,6 +140,8 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_TELEFONES: "Telefones",
       LABEL_CARGOS_ACESSO: "Cargos do Sistema",
       LABEL_NOME_GRUPO_VINCULADO: "Cargo Vinculado",
+      LABEL_NOME_PRODUTO_VINCULADO: "Produto Vinculado",
+      LABEL_VALORPRODUTO: "Valor do produto",
       LABEL_REMOVER: "Remover",
       LABEL_REMOVER_GRUPO: "Remover Grupo",
       LABEL_REMOVER_TELEFONE: "Remover Telefone",
