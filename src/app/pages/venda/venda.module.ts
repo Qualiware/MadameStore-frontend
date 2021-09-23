@@ -1,3 +1,5 @@
+import { ItemVendaClientResolve } from './../../shared/services/item-venda-client/item-venda-client.resolve';
+
 import { NgModule } from '@angular/core';
 import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +15,7 @@ import { ValidationModule } from '../../shared/validation/validation.module';
 import { VendaFormComponent } from './venda-form/venda-form.component';
 import { VendaListComponent } from './venda-list/venda-list.component';
 import { VendaClientModule } from './shared/venda-client/venda-client.module';
+import { ItemVendaClientService } from 'src/app/shared/services/item-venda-client/item-venda-client.service';
 
 
 
@@ -20,7 +23,8 @@ import { VendaClientModule } from './shared/venda-client/venda-client.module';
 @NgModule({
   declarations: [
     VendaFormComponent,
-    VendaListComponent
+    VendaListComponent,
+
   ],
   entryComponents: [
   ],
@@ -33,7 +37,10 @@ import { VendaClientModule } from './shared/venda-client/venda-client.module';
     ValidationModule,
     VendaClientModule,
     NgxMaskModule.forRoot({}),
-    RouterModule.forChild(VendaRoutes)
-  ]
+    RouterModule.forChild(VendaRoutes),
+
+
+  ],
+  providers: [ItemVendaClientService, ItemVendaClientResolve],
 })
 export class VendaModule { }

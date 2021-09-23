@@ -1,3 +1,4 @@
+import { ItemVendaClientResolve } from './../../shared/services/item-venda-client/item-venda-client.resolve';
 import {Routes} from '@angular/router';
 import {SecurityGuard} from '../../shared/security/security.guard';
 
@@ -45,7 +46,8 @@ export const VendaRoutes: Routes = [
       }
     },
     resolve: {
-      vendas: VendaListResolve
+      vendas: VendaListResolve,
+      itemVenda: ItemVendaClientResolve
     }
   },
   {
@@ -64,6 +66,7 @@ export const VendaRoutes: Routes = [
     },
     resolve: {
       venda: VendaResolve,
+      itemVenda: ItemVendaClientResolve
     }
   },
   {
@@ -82,6 +85,7 @@ export const VendaRoutes: Routes = [
     },
     resolve: {
       venda: VendaResolve,
+      itemVenda: ItemVendaClientResolve
     }
   },
   {

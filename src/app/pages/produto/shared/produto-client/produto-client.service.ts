@@ -91,4 +91,14 @@ export class ProdutoClientService {
     return result;
   }
 
+
+  /**
+   * Retorna a lista de Grupos Ativos.
+   *
+   * @param idSistema
+   */
+   public getProdutosAtivos(): Observable<any> {
+    return this.http.get(`${environment.urlApi}/produto/ativos`);
+  }
+
 }
