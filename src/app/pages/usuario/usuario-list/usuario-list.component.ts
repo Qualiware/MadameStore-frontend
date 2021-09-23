@@ -1,14 +1,14 @@
 /* tslint:disable:no-redundant-jsdoc */
-import { ActivatedRoute } from '@angular/router';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatTableDataSource } from "@angular/material/table";
+import { Component, OnInit, ViewChild } from "@angular/core";
 
-import { MessageService } from 'src/app/shared/message/message.service';
-import { FiltroUsuarioDTO } from '../../../shared/dto/filtro-usuario.dto';
-import { SecurityService } from 'src/app/shared/security/security.service';
-import { AbstractComponent } from '../../../shared/component/Abstract.component';
-import { UsuarioClientService } from '../shared/usuario-client/usuario-client.service';
+import { MessageService } from "src/app/shared/message/message.service";
+import { FiltroUsuarioDTO } from "../../../shared/dto/filtro-usuario.dto";
+import { SecurityService } from "src/app/shared/security/security.service";
+import { AbstractComponent } from "../../../shared/component/Abstract.component";
+import { UsuarioClientService } from "../shared/usuario-client/usuario-client.service";
 
 /**
  * Componente de listagem de Usuário.
@@ -16,19 +16,25 @@ import { UsuarioClientService } from '../shared/usuario-client/usuario-client.se
  * @author Guiliano Rangel (UEG)
  */
 @Component({
-  selector: 'app-usuario-list',
-  templateUrl: './usuario-list.component.html',
-  styleUrls: ['./usuario-list-component.scss']
+  selector: "app-usuario-list",
+  templateUrl: "./usuario-list.component.html",
+  styleUrls: ["./usuario-list-component.scss"],
 })
 export class UsuarioListComponent extends AbstractComponent implements OnInit {
-
   public filtroDTO: FiltroUsuarioDTO;
 
   public dataSource: MatTableDataSource<any>;
 
   public tiposCadastro: any[];
 
-  public displayedColumns = ['login', 'nome', 'ultimoAcesso', 'statusPortal', 'acoes'];
+  public displayedColumns = [
+    "cpf",
+    "nome",
+    "email",
+    "ultimoAcesso",
+    "statusPortal",
+    "acoes",
+  ];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -66,13 +72,17 @@ export class UsuarioListComponent extends AbstractComponent implements OnInit {
    * @param filtroUsuarioDTO
    */
   public pesquisar(filtroUsuarioDTO: FiltroUsuarioDTO): void {
-    this.usuarioClientService.getByFiltro(filtroUsuarioDTO).subscribe(data => {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.data = data;
-    }, data => {
-      this.messageService.addMsgDanger(data);
-      this.dataSource.data = [];
-    });
+    console.log(filtroUsuarioDTO.email);
+    this.usuarioClientService.getByFiltro(filtroUsuarioDTO).subscribe(
+      (data) => {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.data = data;
+      },
+      (data) => {
+        this.messageService.addMsgDanger(data);
+        this.dataSource.data = [];
+      }
+    );
   }
 
   /**
@@ -102,17 +112,24 @@ export class UsuarioListComponent extends AbstractComponent implements OnInit {
    * @param usuario
    */
   private ativar(usuario: any): void {
-    this.messageService.addConfirmYesNo('MSG034', () => {
-      this.usuarioClientService.ativar(usuario.id).subscribe(() => {
-        this.pesquisar(this.filtroDTO);
-        this.messageService.addMsgSuccess('MSG007');
-      }, error => {
+    this.messageService.addConfirmYesNo(
+      "MSG034",
+      () => {
+        this.usuarioClientService.ativar(usuario.id).subscribe(
+          () => {
+            this.pesquisar(this.filtroDTO);
+            this.messageService.addMsgSuccess("MSG007");
+          },
+          (error) => {
+            usuario.status = false;
+            this.messageService.addMsgDanger(error);
+          }
+        );
+      },
+      () => {
         usuario.status = false;
-        this.messageService.addMsgDanger(error);
-      });
-    }, () => {
-      usuario.status = false;
-    });
+      }
+    );
   }
 
   /**
@@ -121,16 +138,23 @@ export class UsuarioListComponent extends AbstractComponent implements OnInit {
    * @param usuario
    */
   private inativar(usuario: any): void {
-    this.messageService.addConfirmYesNo('MSG033', () => {
-      this.usuarioClientService.inativar(usuario.id).subscribe(() => {
-        this.pesquisar(this.filtroDTO);
-        this.messageService.addMsgSuccess('MSG007');
-      }, error => {
+    this.messageService.addConfirmYesNo(
+      "MSG033",
+      () => {
+        this.usuarioClientService.inativar(usuario.id).subscribe(
+          () => {
+            this.pesquisar(this.filtroDTO);
+            this.messageService.addMsgSuccess("MSG007");
+          },
+          (error) => {
+            usuario.status = true;
+            this.messageService.addMsgDanger(error);
+          }
+        );
+      },
+      () => {
         usuario.status = true;
-        this.messageService.addMsgDanger(error);
-      });
-    }, () => {
-      usuario.status = true;
-    });
+      }
+    );
   }
 }

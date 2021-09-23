@@ -1,25 +1,24 @@
 /* tslint:disable:no-redundant-jsdoc */
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../../environments/environment';
-import { FiltroUsuarioDTO } from '../../../../shared/dto/filtro-usuario.dto';
-import { FiltroUserKeycloakDTO } from '../../../../shared/dto/filtro-user-keycloak.dto';
+import { Observable } from "rxjs";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../../../../environments/environment";
+import { FiltroUsuarioDTO } from "../../../../shared/dto/filtro-usuario.dto";
+import { FiltroUserKeycloakDTO } from "../../../../shared/dto/filtro-user-keycloak.dto";
 
 /**
  * Classe de integração com o serviço de Usuário.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class UsuarioClientService {
-
   /**
    * Construtor da classe.
    *
    * @param http
    */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /**
    * Retorna a instância de Usuário conforme o 'id' informado.
@@ -38,7 +37,7 @@ export class UsuarioClientService {
    */
   public getByFiltro(filtroDTO: FiltroUsuarioDTO): Observable<any> {
     return this.http.get(`${environment.urlApi}/usuarios/filtro`, {
-      params: filtroDTO.toParams()
+      params: filtroDTO.toParams(),
     });
   }
 
@@ -47,9 +46,11 @@ export class UsuarioClientService {
    *
    * @param filtroDTO
    */
-  public getUsuariosADByFiltro(filtroDTO: FiltroUserKeycloakDTO): Observable<any> {
+  public getUsuariosADByFiltro(
+    filtroDTO: FiltroUserKeycloakDTO
+  ): Observable<any> {
     return this.http.get(`${environment.urlApi}/usuarios/ad/filtro`, {
-      params: filtroDTO.toParams()
+      params: filtroDTO.toParams(),
     });
   }
 
@@ -62,7 +63,10 @@ export class UsuarioClientService {
     let result: Observable<any> = null;
 
     if (usuario.id) {
-      result = this.http.put(`${environment.urlApi}/usuarios/${usuario.id}`, usuario);
+      result = this.http.put(
+        `${environment.urlApi}/usuarios/${usuario.id}`,
+        usuario
+      );
     } else {
       result = this.http.post(`${environment.urlApi}/usuarios/`, usuario);
     }
@@ -99,9 +103,13 @@ export class UsuarioClientService {
     let observable: Observable<any>;
 
     if (id === undefined) {
-      observable = this.http.get(`${environment.urlApi}/usuarios/cpf/valido/${cpf}`);
+      observable = this.http.get(
+        `${environment.urlApi}/usuarios/cpf/valido/${cpf}`
+      );
     } else {
-      observable = this.http.get(`${environment.urlApi}/usuarios/${id}/cpf/valido/${cpf}`);
+      observable = this.http.get(
+        `${environment.urlApi}/usuarios/${id}/cpf/valido/${cpf}`
+      );
     }
     return observable;
   }

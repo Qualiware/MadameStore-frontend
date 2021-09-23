@@ -1,5 +1,5 @@
 /* tslint:disable:no-redundant-jsdoc */
-import { HttpParams } from '@angular/common/http';
+import { HttpParams } from "@angular/common/http";
 
 /**
  * Classe de trânsferencia com os parâmetros utilizados em filtros de pesquisa de Usuário.
@@ -7,21 +7,22 @@ import { HttpParams } from '@angular/common/http';
  * @author Guiliano Rangel (UEG)
  */
 export class FiltroUsuarioDTO {
-
   /**
    * Construtor da classe.
    *
-   * @param login
+   * @param cpf
    * @param nome
    * @param status
    * @param idTipo
+   * @param email
    */
   constructor(
-    public login?: string,
+    public cpf?: string,
     public nome?: string,
     public status?: string,
-    public idTipo?: string
-  ) { }
+    public idTipo?: string,
+    public email?: string
+  ) {}
 
   /**
    * Transforma o JSON do parâmetro em um objeto do modelo de dominio da aplicação.
@@ -45,21 +46,26 @@ export class FiltroUsuarioDTO {
   public toParams(): HttpParams {
     let params = new HttpParams();
 
-    if (this.login) {
-      params = params.append('login', this.login);
+    if (this.cpf) {
+      params = params.append("cpf", this.cpf);
     }
 
     if (this.nome) {
-      params = params.append('nome', this.nome);
+      params = params.append("nome", this.nome);
     }
 
     if (this.status !== undefined) {
-      params = params.append('idStatus', this.status ? 'A' : 'I' );
+      params = params.append("idStatus", this.status ? "A" : "I");
     }
 
     if (this.idTipo) {
-      params = params.append('idTipo', this.idTipo);
+      params = params.append("idTipo", this.idTipo);
     }
+
+    if (this.email) {
+      params = params.append("email", this.email);
+    }
+
     return params;
   }
 }
