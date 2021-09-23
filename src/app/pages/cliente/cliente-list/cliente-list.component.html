@@ -174,113 +174,14 @@
                   </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="quantidadeVendida">
+                <ng-container matColumnDef="telefone">
                   <mat-header-cell
                     class="style-header"
                     fxHide.xs="true"
                     fxLayoutAlign="start center"
                     *matHeaderCellDef
                   >
-                    {{ "LABEL_QUANTIDADE_VENDIDA" | i18n }}
-                  </mat-header-cell>
-                  <mat-cell
-                    fxFlex.lt-sm="100"
-                    ngClass.gt-sm="style-column"
-                    fxLayoutAlign="start center"
-                    *matCellDef="let element"
-                  >
-                    <div fxFlex fxLayout="row">
-                      <div
-                        fxFlex="130px"
-                        fxHide.gt-xs="true"
-                        fxLayoutAlign="center center"
-                        fxLayoutGap.lt-sm="1"
-                      >
-                        <span class="mat-body-strong"
-                          >{{ "LABEL_QUANTIDADE_VENDIDA" | i18n }} :</span
-                        >
-                      </div>
-                      <div>
-                        {{ element.qualidadeVendida }}
-                      </div>
-                    </div>
-                  </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="nomeTipoCliente">
-                  <mat-header-cell
-                    class="style-header"
-                    fxHide.xs="true"
-                    fxLayoutAlign="start center"
-                    *matHeaderCellDef
-                  >
-                    {{ "LABEL_TIPO_CLIENTE" | i18n }}
-                  </mat-header-cell>
-                  <mat-cell
-                    fxFlex.lt-sm="100"
-                    ngClass.gt-sm="style-column"
-                    fxLayoutAlign="start center"
-                    *matCellDef="let element"
-                  >
-                    <div fxFlex fxLayout="row">
-                      <div
-                        fxFlex="130px"
-                        fxHide.gt-xs="true"
-                        fxLayoutAlign="center center"
-                        fxLayoutGap.lt-sm="1"
-                      >
-                        <span class="mat-body-strong"
-                          >{{ "LABEL_TIPO_CLIENTE" | i18n }} :</span
-                        >
-                      </div>
-                      <div>
-                        {{ element.nomeTipoCliente }}
-                      </div>
-                    </div>
-                  </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="vliquido">
-                  <mat-header-cell
-                    class="style-header"
-                    fxHide.xs="true"
-                    fxLayoutAlign="start center"
-                    *matHeaderCellDef
-                  >
-                    {{ "LABEL_VLIQUIDO" | i18n }}
-                  </mat-header-cell>
-                  <mat-cell
-                    fxFlex.lt-sm="100"
-                    ngClass.gt-sm="style-column"
-                    fxLayoutAlign="start center"
-                    *matCellDef="let element"
-                  >
-                    <div fxFlex fxLayout="row">
-                      <div
-                        fxFlex="130px"
-                        fxHide.gt-xs="true"
-                        fxLayoutAlign="center center"
-                        fxLayoutGap.lt-sm="1"
-                      >
-                        <span class="mat-body-strong"
-                          >{{ "LABEL_VLIQUIDO" | i18n }} :</span
-                        >
-                      </div>
-                      <div>
-                        {{ element.vliquido }}
-                      </div>
-                    </div>
-                  </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="preco">
-                  <mat-header-cell
-                    class="style-header"
-                    fxHide.xs="true"
-                    fxLayoutAlign="start center"
-                    *matHeaderCellDef
-                  >
-                    {{ "LABEL_PRECO" | i18n }}
+                    {{ "LABEL_TELEFONE" | i18n }}
                   </mat-header-cell>
                   <mat-cell
                     fxFlex.lt-sm="100"
@@ -296,24 +197,24 @@
                         fxLayoutGap.lt-sm="1"
                       >
                         <span class="mat-body-strong"
-                          >{{ "LABEL_PRECO" | i18n }} :</span
+                          >{{ "LABEL_TELEFONE" | i18n }} :</span
                         >
                       </div>
                       <div>
-                        {{ element.preco }}
+                        {{ element.telefone }}
                       </div>
                     </div>
                   </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="descricao">
+                <ng-container matColumnDef="email">
                   <mat-header-cell
                     class="style-header"
                     fxHide.xs="true"
-                    fxLayoutAlign="center center"
+                    fxLayoutAlign="start center"
                     *matHeaderCellDef
                   >
-                    {{ "LABEL_DESCRICAO" | i18n }}
+                    {{ "LABEL_EMAIL" | i18n }}
                   </mat-header-cell>
                   <mat-cell
                     fxFlex.lt-sm="100"
@@ -323,17 +224,17 @@
                   >
                     <div fxFlex fxLayout="row">
                       <div
-                        fxFlex="100px"
+                        fxFlex="130px"
                         fxHide.gt-xs="true"
                         fxLayoutAlign="end center"
                         fxLayoutGap.lt-sm="1"
                       >
                         <span class="mat-body-strong"
-                          >{{ "LABEL_DESCRICAO" | i18n }} :</span
+                          >{{ "LABEL_EMAIL" | i18n }} :</span
                         >
                       </div>
                       <div>
-                        {{ element.descricao }}
+                        {{ element.email }}
                       </div>
                     </div>
                   </mat-cell>
