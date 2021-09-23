@@ -1,6 +1,10 @@
 # ModeloFrontendAngular
 
-Usuário criados no sistema tenha a senha padrão 123456
+Integrantes:
+
+- Caio Martins Padilha
+- Júlio César Afonso Fernandes Silva
+- Lucas Vicente Serafim
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
 
