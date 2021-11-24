@@ -209,7 +209,11 @@
           >
             <span>{{'LABEL_CANCELAR' | i18n}}</span>
           </a>
+<<<<<<< HEAD
           <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(venda, formVenda, $event)"
+=======
+          <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(venda,produtoInclusao, formVenda, $event)"
+>>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
                   fxFlex fxFlexOffset="1"
                   class="mat-button mat-raised-button mat-primary mat-button-base"
                   *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoIncluir()"

@@ -142,19 +142,32 @@ export class VendaFormComponent {
       const produtoVinculado = this.produtosVinculados.find(
         (produto) => produto.idProduto === produtoInclusao.produto.id
       );
+<<<<<<< HEAD
 
       // Verifica se o Produto foi encontrado
       if (produtoVinculado === undefined) {
         this.produtosVinculados.push({
 
 
+=======
+      if(this.venda.valor){
+        this.valorVenda =+ Number(this.venda.valorTotal);
+      }
+      // Verifica se o Produto foi encontrado
+      if (produtoVinculado === undefined) {
+        this.produtosVinculados.push({
+>>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
           idVenda: this.venda.id,
           idProduto: produtoInclusao.produto.id,
 
           preco: produtoInclusao.produto.preco,
           nomeProduto: produtoInclusao.produto.nome,
           quantidade: this.itemVendas,
+<<<<<<< HEAD
           valorTotal:this.venda.valorTotal,
+=======
+          valorTotal:this.valorVenda,
+>>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
           nomeSistemaProduto: produtoInclusao.produto.nomeSistema,
 
         });
@@ -189,7 +202,11 @@ export class VendaFormComponent {
    * @param form
    * @param event
    */
+<<<<<<< HEAD
   public salvar(venda: any, form: NgForm, event: any) {
+=======
+  public salvar(venda: any,produto:any, form: NgForm, event: any) {
+>>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
     form.onSubmit(event);
     this.submittedVenda = true;
 
@@ -214,7 +231,18 @@ export class VendaFormComponent {
     }
   }
 
+<<<<<<< HEAD
 
+=======
+  /**
+   * Atualiza o Tipo de Usuário.
+   *
+   * @param event
+   */
+  public atualizarTipoVenda(event: any): void {
+    this.venda.tipo = event.value;
+  }
+>>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
 
 
 
