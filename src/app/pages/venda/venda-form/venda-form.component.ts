@@ -1,3 +1,4 @@
+import { StatusEspera } from './../../../shared/app.constantes';
 import { ClienteClientService } from './../../cliente/shared/cliente-client/cliente-client.service';
 import { ItemVendaClientService } from './../../../shared/services/item-venda-client/item-venda-client.service';
 
@@ -14,6 +15,7 @@ import { SecurityService } from "../../../shared/security/security.service";
 import { VendaClientService } from "../shared/venda-client/venda-client.service";
 import { ProdutoClientService } from "../../produto/shared/produto-client/produto-client.service";
 import { exit } from 'process';
+import { isProtractorLocator } from 'protractor/built/locators';
 
 
 /**
@@ -214,8 +216,10 @@ export class VendaFormComponent {
 
     if (form.valid) {
       if (this.produtosVinculados.length > 0) {
+
         venda.itemVenda = this.produtosVinculados;
        // console.log(venda);
+
         this.vendaClientService.salvar(venda).subscribe(
           () => {
             this.router.navigate(["/administracao/venda"]);
@@ -272,6 +276,7 @@ export class VendaFormComponent {
    public alterarStatusVendido(venda: any): void {
     if (venda.statusVendido) {
       this.tornarVendido(venda);
+
     } else {
       this.deixarVendido(venda);
     }
@@ -290,6 +295,16 @@ export class VendaFormComponent {
         venda.status = false;
         this.messageService.addMsgDanger(error);
       });
+
+
+      if(venda.StatusEspera){
+      this.vendaClientService.deixarVendaEspera(venda.id).subscribe(() => {
+        this.messageService.addMsgSuccess('MSG007');
+      }, error => {
+        venda.status = true;
+        this.messageService.addMsgDanger(error);
+      });}
+
     }, () => {
       venda.status = false;
     });
@@ -308,6 +323,8 @@ export class VendaFormComponent {
         venda.status = true;
         this.messageService.addMsgDanger(error);
       });
+
+
     }, () => {
       venda.status = true;
     });
@@ -341,6 +358,15 @@ export class VendaFormComponent {
         venda.status = false;
         this.messageService.addMsgDanger(error);
       });
+
+
+      if(venda.StatusVendido){
+        this.vendaClientService.deixarVendido(venda.id).subscribe(() => {
+          this.messageService.addMsgSuccess('MSG007');
+        }, error => {
+          venda.status = true;
+          this.messageService.addMsgDanger(error);
+        });}
     }, () => {
       venda.status = false;
     });

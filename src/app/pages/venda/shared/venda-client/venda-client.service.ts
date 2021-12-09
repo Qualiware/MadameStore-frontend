@@ -51,11 +51,9 @@ export class VendaClientService {
     let result: Observable<any> = null;
 
     if (venda.id) {
+
       result = this.http.put(`${environment.urlApi}/venda/${venda.id}`, venda);
     } else {
-      if(venda.cliente==null){
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-      }
       result = this.http.post(`${environment.urlApi}/venda/`, venda);
 
     }

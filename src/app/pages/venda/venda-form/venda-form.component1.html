@@ -116,38 +116,46 @@
 
       </div>
       </mat-card>
-      <mat-card fxLayout="column" fxLayoutGap="4%" fxLayoutGap.xs="5%">
-      <div fxLayout="row" fxLayoutAlign.gt-xs="center center" fxLayout.lt-sm="column" fxLayoutGap="0.7%" fxLayoutGap.xs="7%">
+    -<mat-card fxLayout="column" fxLayoutGap="4%" fxLayoutGap.xs="5%">
+      <div fxLayout="row" fxLayoutAlign.gt-xs="start center" fxLayout.lt-sm="column" fxLayoutGap="0.7%" fxLayoutGap.xs="7%">
 
         <div fxLayout="column" fxLayoutAlign.gt-xs="start start" fxLayout.lt-sm="row" fxLayoutGap.lt-sm="3%" fxLayoutGap.gt-xs="7%"
-             *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoVisualizar() || acaoSistema.isAcaoIncluir()">
-          <mat-label>{{'LABEL_STATUS_VENDIDO' | i18n}}:</mat-label>
-          <mat-slide-toggle [(ngModel)]="venda.statusVendido" (change)="alterarStatusVendido(venda)" name="statusVendido"
-                            *ngIf="acaoSistema.isAcaoAlterar() && securityService.hasRoles('ROLE_VENDA_INCLUIR')"
-                            title="{{ (venda.statusVendido? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
-          >
-          </mat-slide-toggle>
+             *ngIf=" acaoSistema.isAcaoVisualizar() ">
+             <div class="content__title" fxFlex fxFlexAlign="center end">
+          <mat-label *ngIf=" acaoSistema.isAcaoVisualizar() && venda.statusVendido">
+            {{'LABEL_STATUS_VENDIDO' | i18n}}:</mat-label>
+            <mat-label *ngIf=" acaoSistema.isAcaoVisualizar() && venda.statusEspera">
+              {{'LABEL_STATUS_ESPERA' | i18n}}:</mat-label>
+            </div>
           <mat-label
-            *ngIf="acaoSistema.isAcaoVisualizar() || !securityService.hasRoles('ROLE_VENDA_INCLUIR')">
-            {{(venda.statusVendido ? 'LABEL_SIM' : 'LABEL_NAO') | i18n}}
+          *ngIf=" acaoSistema.isAcaoVisualizar() && venda.statusVendido">
+            {{(venda.statusVendido ? 'LABEL_INFORMACAO_VENDIDO_CORRETO' : 'LABEL_INFORMACAO_VENDIDO_INCORRETO') | i18n}}
+
+
           </mat-label>
+          <mat-label
+          *ngIf=" acaoSistema.isAcaoVisualizar() && venda.statusEspera">
+          {{(venda.statusEspera ? 'LABEL_INFORMACAO_ESPERA_CORRETO' : 'LABEL_INFORMACAO_ESPERA_INCORRETO') | i18n}}
+        </mat-label>
         </div>
       </div>
       </mat-card>
 
+     <!--  <mat-card fxLayout="column" fxLayoutGap="4%" fxLayoutGap.xs="5%">
       <div fxLayout="column" fxLayoutAlign.gt-xs="start start" fxLayout.lt-sm="row" fxLayoutGap.lt-sm="3%" fxLayoutGap.gt-xs="7%"
-      *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoVisualizar()||acaoSistema.isAcaoIncluir()">
+      *ngIf=" acaoSistema.isAcaoVisualizar()">
    <mat-label>{{'LABEL_VENDA' | i18n}}:</mat-label>
-   <mat-slide-toggle [(ngModel)]="venda.statusEspera" (change)="alterarStatusEspera(venda)" name="statusEspera"
-                     *ngIf="acaoSistema.isAcaoAlterar() && securityService.hasRoles('ROLE_VENDA_ALTERAR')"
+  <mat-slide-toggle [(ngModel)]="venda.statusEspera" (change)="alterarStatusEspera(venda)" name="statusEspera"
+                     *ngIf="acaoSistema.isAcaoVisualizar()&& securityService.hasRoles('ROLE_VENDA_ALTERAR')"
                      title="{{ (venda.statusEspera? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
    >
    </mat-slide-toggle>
    <mat-label
      *ngIf="acaoSistema.isAcaoVisualizar() || !securityService.hasRoles('ROLE_VENDA_ALTERAR')">
-     {{(venda.statusEspera ? 'LABEL_SIM' : 'LABEL_NAO') | i18n}}
+     {{(venda.statusEspera ? 'LABEL_INFORMACAO_ESPERA_CORRETO' : 'LABEL_INFORMACAO_ESPERA_INCORRETO') | i18n}}
    </mat-label>
  </div>
+ </mat-card>-->
 
     </form>
 

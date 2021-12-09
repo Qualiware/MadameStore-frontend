@@ -7,7 +7,7 @@
     <div fxFlex fxLayoutAlign="end center">
       <button class="mat-button mat-raised-button mat-accent mat-button-base"
               title="{{'LABEL_ADICIONAR_NOVO' | i18n}}" routerLink="/administracao/amigo/incluir"
-              *ngIf="securityService.hasRoles('ROLE_AMIGO_INCLUIR')">
+              *ngIf="securityService.hasRoles('ROLE_VENDA_INCLUIR')">
         {{'LABEL_ADICIONAR_NOVO' | i18n}}
       </button>
     </div>
@@ -142,9 +142,9 @@
                        fxLayoutGap.lt-sm="1">
                     <mat-slide-toggle [(ngModel)]="element.amigo" (change)="alterarStatusAmigo(element)"
                                       title="{{ (element.amigo ? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
-                                      *ngIf="securityService.hasRoles('ROLE_AMIGO_STATUS')">
+                                      *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')">
                     </mat-slide-toggle>
-                    <span *ngIf="!securityService.hasRoles('ROLE_AMIGO_STATUS')">
+                    <span *ngIf="!securityService.hasRoles('ROLE_VENDA_ALTERAR')">
                                     {{(element.amigo ? 'LABEL_SIM' : 'LABEL_NAO') | i18n}}
                                 </span>
                   </div>
@@ -163,19 +163,19 @@
                   </div>
                   <div fxLayout="row" fxLayoutAlign="center center">
                     <a mat-mini-fab title="{{'LABEL_VISUALIZAR_AMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_AMIGO_VISUALIZAR')"
+                       *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')"
                        [routerLink]="['/administracao/amigo', element.id, 'visualizar']">
                       <mat-icon>search</mat-icon>
                     </a>
 
                     <a mat-mini-fab title="{{'LABEL_ALTERAR_AMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_AMIGO_ALTERAR')"
+                       *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')"
                        [routerLink]="['/administracao/amigo', element.id, 'alterar']">
                       <mat-icon>edit</mat-icon>
                     </a>
 
                     <a mat-mini-fab title="{{'LABEL_REMOVER_AMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_AMIGO_REMOVER')"
+                       *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')"
                        (click)="remover(element)">
                       <mat-icon>close</mat-icon>
                     </a>
