@@ -14,6 +14,7 @@ export class AppMessage implements InternacionalizacaoResource {
   constructor() {
     this.resource = {
       // LABEL
+
       LABEL_OK: "OK",
       LABEL_SAIR: "Sair",
       LABEL_SIM: "Sim",
@@ -177,6 +178,8 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_DADOS_USUARIO: "Dados do Usuário",
       LABEL_IP_USUARIO: "IP do Usuário",
       LABEL_VISUALIZAR_IMPRESSAO: "Visualizar Impressão",
+      LABEL_STATUS_ESPERA:'Venda Pendente',
+      LABEL_STATUS_VENDIDO:'Venda Concluida',
 
       MAP_OPTION_INCLUSAO: "Inclusão",
       MAP_OPTION_ALTERACAO: "Alteração",
@@ -233,6 +236,7 @@ export class AppMessage implements InternacionalizacaoResource {
       MSG045: "Confirmar Exclus\u00E1o?",
       MSG046: "Tornar cadastro Amigo?",
       MSG047: "Deixar de ser Amigo do cadastro?",
+      MSG048:"Não possui produto suficiente",
 
       // Validation
       required: "Campo obrigat\u00F3rio n\u00E3o preenchido.",

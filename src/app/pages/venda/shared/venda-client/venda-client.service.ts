@@ -53,7 +53,11 @@ export class VendaClientService {
     if (venda.id) {
       result = this.http.put(`${environment.urlApi}/venda/${venda.id}`, venda);
     } else {
+      if(venda.cliente==null){
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+      }
       result = this.http.post(`${environment.urlApi}/venda/`, venda);
+
     }
     return result;
   }
@@ -64,8 +68,8 @@ export class VendaClientService {
    * @param id
    * @return
    */
-  public tornarVenda(id: number): Observable<any> {
-    return this.http.put(`${environment.urlApi}/venda/${id}/tornar-venda`, {});
+  public tornarVendido(id: number): Observable<any> {
+    return this.http.put(`${environment.urlApi}/venda/${id}/tornar-vendido`, {});
   }
 
   /**
@@ -74,8 +78,8 @@ export class VendaClientService {
    * @param id
    * @return
    */
-  public deixarAmizade(id: number): Observable<any> {
-    return this.http.put(`${environment.urlApi}/venda/${id}/deixar-venda`, {});
+  public deixarVendido(id: number): Observable<any> {
+    return this.http.put(`${environment.urlApi}/venda/${id}/deixar-vendido`, {});
   }
 
   /**
@@ -89,6 +93,27 @@ export class VendaClientService {
     result = this.http.delete(`${environment.urlApi}/venda/${venda.id}`, {});
 
     return result;
+  }
+
+
+  /**
+   * Torna Venda o Venda pelo 'id' informado (é Venda=true).
+   *
+   * @param id
+   * @return
+   */
+   public tornarVendaEspera(id: number): Observable<any> {
+    return this.http.put(`${environment.urlApi}/venda/${id}/tornar-vendaespera`, {});
+  }
+
+  /**
+   * Torna Venda o Venda pelo 'id' informado (é Venda=true).
+   *
+   * @param id
+   * @return
+   */
+   public deixarVendaEspera(id: number): Observable<any> {
+    return this.http.put(`${environment.urlApi}/venda/${id}/deixar-vendaespera`, {});
   }
 
 }

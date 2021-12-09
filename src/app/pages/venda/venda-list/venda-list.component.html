@@ -31,7 +31,28 @@
                   maxlength="100">
         </mat-form-field>
 
-<<<<<<< HEAD
+        <mat-form-field fxFlex.gt-xs="30" fxFlex.lt-sm="100" fxFlexOffset.gt-xs="1">
+          <mat-label>{{'LABEL_STATUS_ESPERA' | i18n}}</mat-label>
+          <mat-select placeholder="{{'LABEL_STATUS_ESPERA' | i18n}}" title="{{'LABEL_STATUS_ESPERA' | i18n}}"
+                      [(ngModel)]="filtroDTO.statusEspera">
+            <mat-option [value]="undefined">{{ 'LABEL_TODOS' | i18n}}</mat-option>
+            <mat-option *ngFor="let statusEspera of listStatusEsperas" [value]="statusEspera.id">
+              {{statusEspera.descricao}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field fxFlex.gt-xs="30" fxFlex.lt-sm="100" fxFlexOffset.gt-xs="1">
+          <mat-label>{{'LABEL_STATUS_VENDIDO' | i18n}}</mat-label>
+          <mat-select placeholder="{{'LABEL_STATUS_VENDIDO' | i18n}}" title="{{'LABEL_STATUS_VENDIDO' | i18n}}"
+                      [(ngModel)]="filtroDTO.statusVendido">
+            <mat-option [value]="undefined">{{ 'LABEL_TODOS' | i18n}}</mat-option>
+            <mat-option *ngFor="let statusVendido of listStatusVendido" [value]="statusVendido.id">
+              {{statusVendido.descricao}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <ng-container matColumnDef="dataCadastro">
           <mat-header-cell
             fxFlex="15"
@@ -70,17 +91,6 @@
             </div>
           </mat-cell>
         </ng-container>
-=======
-      <div fxLayout="row" fxLayoutAlign.gt-xs="center center" fxLayout.lt-sm="column">
-        <mat-form-field fxFlex fxFlex.gt-xs="70" fxFlex.lt-sm="100">
-          <mat-label>{{'LABEL_DATAVENDA' | i18n}}</mat-label>
-          <input matInput [matDatepicker]="picker"  name="dataVenda" readonly
-                 (focus)="picker.open()" (click)="picker.open()" placeholder="{{'LABEL_DATAVENDA' | i18n}}">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
->>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
 
       <div fxLayout="column" fxFlex="100" fxLayoutAlign="center center">
         <div fxFlex.gt-sm="50" fxFlex.sm="50" fxFlex.lt-sm="100" fxFlexAlign="space-between" fxLayoutAlign="center center">
@@ -154,6 +164,52 @@
                       <div fxFlex fxLayoutAlign.gt-xs="center center" fxLayoutAlign.lt-sm="start center"
                            fxLayoutGap.lt-sm="1">
                         {{element.dataVenda | date: 'dd/MM/yyyy'}}
+                      </div>
+                    </div>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="statusEspera">
+                  <mat-header-cell fxFlex.gt-sm="100px" class="style-header" fxLayoutAlign="center center"
+                                   *matHeaderCellDef>{{ 'LABEL_STATUS_ESPERA' | i18n}}  </mat-header-cell>
+                  <mat-cell fxFlex.gt-sm="100px" fxFlex.lt-sm="100" ngClass.gt-sm="style-column"
+                            fxLayoutAlign="center center" *matCellDef="let element">
+                    <div fxFlex fxLayout="row">
+                      <div fxFlex="130px" fxHide.gt-xs="true" fxLayoutAlign="end center">
+                        <span class="mat-body-strong">{{ 'LABEL_STATUS_ESPERA' | i18n}}? :</span>
+                      </div>
+                      <div fxFlex fxLayoutAlign.gt-xs="center center" fxLayoutAlign.lt-sm="start center"
+                           fxLayoutGap.lt-sm="1">
+                        <mat-slide-toggle [(ngModel)]="element.statusEspera" (change)="alterarStatusVendaEspera(element)"
+                                          title="{{ (element.statusEspera ? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
+                                          *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')">
+                        </mat-slide-toggle>
+                        <span *ngIf="!securityService.hasRoles('ROLE_VENDA_ALTERAR')">
+                                        {{(element.statusEspera ? 'LABEL_SIM' : 'LABEL_NAO') | i18n}}
+                                    </span>
+                      </div>
+                    </div>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="statusVendido">
+                  <mat-header-cell fxFlex.gt-sm="100px" class="style-header" fxLayoutAlign="center center"
+                                   *matHeaderCellDef>{{ 'LABEL_STATUS_VENDIDO' | i18n}}  </mat-header-cell>
+                  <mat-cell fxFlex.gt-sm="100px" fxFlex.lt-sm="100" ngClass.gt-sm="style-column"
+                            fxLayoutAlign="center center" *matCellDef="let element">
+                    <div fxFlex fxLayout="row">
+                      <div fxFlex="130px" fxHide.gt-xs="true" fxLayoutAlign="end center">
+                        <span class="mat-body-strong">{{ 'LABEL_STATUS_VENDIDO' | i18n}}? :</span>
+                      </div>
+                      <div fxFlex fxLayoutAlign.gt-xs="center center" fxLayoutAlign.lt-sm="start center"
+                           fxLayoutGap.lt-sm="1">
+                        <mat-slide-toggle [(ngModel)]="element.statusVendido" (change)="alterarStatusVendido(element)"
+                                          title="{{ (element.statusVendido ? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
+                                          *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')">
+                        </mat-slide-toggle>
+                        <span *ngIf="!securityService.hasRoles('ROLE_VENDA_ALTERAR')">
+                                        {{(element.statusVendido ? 'LABEL_SIM' : 'LABEL_NAO') | i18n}}
+                                    </span>
                       </div>
                     </div>
                   </mat-cell>

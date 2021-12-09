@@ -1,3 +1,4 @@
+import { ClienteClientService } from './../../cliente/shared/cliente-client/cliente-client.service';
 import { ItemVendaClientService } from './../../../shared/services/item-venda-client/item-venda-client.service';
 
 /* tslint:disable:no-redundant-jsdoc */
@@ -12,6 +13,7 @@ import { AcaoSistema } from "../../../shared/component/acao-sistema.acao";
 import { SecurityService } from "../../../shared/security/security.service";
 import { VendaClientService } from "../shared/venda-client/venda-client.service";
 import { ProdutoClientService } from "../../produto/shared/produto-client/produto-client.service";
+import { exit } from 'process';
 
 
 /**
@@ -21,12 +23,12 @@ import { ProdutoClientService } from "../../produto/shared/produto-client/produt
  */
 @Component({
   selector: "app-venda-form",
-  templateUrl: "./venda-form.component.html",
+  templateUrl: "./venda-form.component1.html",
   styleUrls: ["./venda-form.component.scss"],
 })
 export class VendaFormComponent {
   public acaoSistema: AcaoSistema;
-
+  public valorTotalVenda: Number;
   public venda: any;
   public telefonesVenda: any[];
   public produtoInclusao: any;
@@ -35,6 +37,9 @@ export class VendaFormComponent {
   public submittedVenda: boolean;
   public submittedProduto: boolean;
   public valorVenda?: Number;
+
+
+  public clientes: any[];
 
   public itemVendas:any[];
   private dialogRef: MatDialogRef<any>;
@@ -70,9 +75,10 @@ export class VendaFormComponent {
     this.acaoSistema = new AcaoSistema(route);
     this.dataSourceProdutos = new MatTableDataSource<any>();
     this.itemVendas=route.snapshot.data.itemVendas;
+    this.clientes = route.snapshot.data.clientes;
 
     if (this.acaoSistema.isAcaoVisualizar()) {
-      this.displayedColumns = ["nomeProdutoVinculado","valorProduto","quantidade","valorTotal"];
+      this.displayedColumns = ["nomeProdutoVinculado","valorProduto","quantidade"];
     } else {
       this.displayedColumns = ["nomeProdutoVinculado", "valorProduto","quantidade", "remover"];
     }
@@ -86,8 +92,8 @@ export class VendaFormComponent {
 
       // Inicializa o Usuário para Inclusão
       this.venda = {
+        itemVendas:[],
 
-        produtos: [],
       };
     }
 
@@ -142,41 +148,40 @@ export class VendaFormComponent {
       const produtoVinculado = this.produtosVinculados.find(
         (produto) => produto.idProduto === produtoInclusao.produto.id
       );
-<<<<<<< HEAD
+
+
+
 
       // Verifica se o Produto foi encontrado
-      if (produtoVinculado === undefined) {
+      if (produtoVinculado === undefined && this.itemVendas<=produtoInclusao.produto.quantidade) {
         this.produtosVinculados.push({
 
 
-=======
-      if(this.venda.valor){
-        this.valorVenda =+ Number(this.venda.valorTotal);
-      }
-      // Verifica se o Produto foi encontrado
-      if (produtoVinculado === undefined) {
-        this.produtosVinculados.push({
->>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
+
           idVenda: this.venda.id,
           idProduto: produtoInclusao.produto.id,
-
           preco: produtoInclusao.produto.preco,
           nomeProduto: produtoInclusao.produto.nome,
-          quantidade: this.itemVendas,
-<<<<<<< HEAD
+          quantidadeVendida: this.itemVendas,
           valorTotal:this.venda.valorTotal,
-=======
-          valorTotal:this.valorVenda,
->>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
           nomeSistemaProduto: produtoInclusao.produto.nomeSistema,
 
         });
-        console.log(produtoInclusao.produto.valorProduto);
-        this.dataSourceProdutos.data = this.produtosVinculados;
-        form.onReset();
-        this.produtoInclusao = {};
+
+          console.log(produtoInclusao.produto.valorProduto);
+          this.dataSourceProdutos.data = this.produtosVinculados;
+
+           form.onReset();
+           this.produtoInclusao = {};
+
+
+
       } else {
+        if(this.itemVendas<=produtoInclusao.produto.quantidade)
         this.messageService.addMsgDanger("MSG011");
+
+        if(this.itemVendas>produtoInclusao.produto.quantidade)
+        this.messageService.addMsgDanger("MSG048");
       }
     }
   }
@@ -202,18 +207,15 @@ export class VendaFormComponent {
    * @param form
    * @param event
    */
-<<<<<<< HEAD
   public salvar(venda: any, form: NgForm, event: any) {
-=======
-  public salvar(venda: any,produto:any, form: NgForm, event: any) {
->>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
     form.onSubmit(event);
     this.submittedVenda = true;
+
 
     if (form.valid) {
       if (this.produtosVinculados.length > 0) {
         venda.itemVenda = this.produtosVinculados;
-
+       // console.log(venda);
         this.vendaClientService.salvar(venda).subscribe(
           () => {
             this.router.navigate(["/administracao/venda"]);
@@ -231,18 +233,6 @@ export class VendaFormComponent {
     }
   }
 
-<<<<<<< HEAD
-
-=======
-  /**
-   * Atualiza o Tipo de Usuário.
-   *
-   * @param event
-   */
-  public atualizarTipoVenda(event: any): void {
-    this.venda.tipo = event.value;
-  }
->>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
 
 
 
@@ -270,6 +260,108 @@ export class VendaFormComponent {
    */
   public closeDialogs(): void {
     this.dialogRef.close();
+  }
+
+
+
+  /**
+   * Altera o status do Amigo informado.
+   *
+   * @param venda
+   */
+   public alterarStatusVendido(venda: any): void {
+    if (venda.statusVendido) {
+      this.tornarVendido(venda);
+    } else {
+      this.deixarVendido(venda);
+    }
+  }
+
+  /**
+   * Torna o cadastro um Amigo.
+   *
+   * @param amigo
+   */
+  private tornarVendido(venda: any): void {
+    this.messageService.addConfirmYesNo('MSG046', () => {
+      this.vendaClientService.tornarVendido(venda.id).subscribe(() => {
+        this.messageService.addMsgSuccess('MSG007');
+      }, error => {
+        venda.status = false;
+        this.messageService.addMsgDanger(error);
+      });
+    }, () => {
+      venda.status = false;
+    });
+  }
+
+  /**
+   * deixar de ser amigo do cadastro
+   *
+   * @param amigo
+   */
+  private deixarVendido(venda: any): void {
+    this.messageService.addConfirmYesNo('MSG047', () => {
+      this.vendaClientService.deixarVendido(venda.id).subscribe(() => {
+        this.messageService.addMsgSuccess('MSG007');
+      }, error => {
+        venda.status = true;
+        this.messageService.addMsgDanger(error);
+      });
+    }, () => {
+      venda.status = true;
+    });
+  }
+
+
+
+  /**
+   * Altera o status do Amigo informado.
+   *
+   * @param venda
+   */
+   public alterarStatusEspera(venda: any): void {
+    if (venda.statusEspera) {
+      this.tornarEspera(venda);
+    } else {
+      this.deixarEspera(venda);
+    }
+  }
+
+  /**
+   * Torna o cadastro um Amigo.
+   *
+   * @param amigo
+   */
+  private tornarEspera(venda: any): void {
+    this.messageService.addConfirmYesNo('MSG046', () => {
+      this.vendaClientService.tornarVendaEspera(venda.id).subscribe(() => {
+        this.messageService.addMsgSuccess('MSG007');
+      }, error => {
+        venda.status = false;
+        this.messageService.addMsgDanger(error);
+      });
+    }, () => {
+      venda.status = false;
+    });
+  }
+
+  /**
+   * deixar de ser amigo do cadastro
+   *
+   * @param amigo
+   */
+  private deixarEspera(venda: any): void {
+    this.messageService.addConfirmYesNo('MSG047', () => {
+      this.vendaClientService.deixarVendaEspera(venda.id).subscribe(() => {
+        this.messageService.addMsgSuccess('MSG007');
+      }, error => {
+        venda.status = true;
+        this.messageService.addMsgDanger(error);
+      });
+    }, () => {
+      venda.status = true;
+    });
   }
 
 

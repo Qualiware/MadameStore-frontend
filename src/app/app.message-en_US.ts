@@ -135,6 +135,8 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_DADOS_USUARIO: 'Dados do Usuário',
       LABEL_IP_USUARIO: 'IP do Usuário',
       LABEL_VISUALIZAR_IMPRESSAO: 'Visualizar Impressão',
+      LABEL_STATUS_ESPERA:'Venda Pendente',
+      LABEL_STATUS_VENDIDO:'Venda Concluida',
 
       MAP_OPTION_INCLUSAO: 'Inclusão',
       MAP_OPTION_ALTERACAO: 'Alteração',
@@ -183,7 +185,9 @@ export class AppMessage implements InternacionalizacaoResource {
       MSG042: 'Usu\u00E1rio Bloqueado',
       MSG044: 'Usu\u00E1rio n\u00E3o tem permiss\u00E3o de acesso a funcionalidade acessada.',
       MSG046: 'Tornar cadastro Amigo?',
+      MSG049: 'O produto n\u00E3o possui quantidade o bastante',
       MSG047: 'Deixar de ser Amigo do cadastro?',
+      MSG048: 'O produto n\u00E3o possui quantidade o bastante',
 
       // Validation
       required: 'Campo obrigat\u00F3rio n\u00E3o preenchido.',

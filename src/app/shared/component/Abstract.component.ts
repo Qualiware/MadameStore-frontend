@@ -1,3 +1,4 @@
+import { StatusEspera, StatusVendido } from './../app.constantes';
 
 import {
   FX_FLEX_GT_XS,
@@ -23,6 +24,8 @@ export class AbstractComponent {
 
   public listStatusAtivosInativos: Array<StatusAtivoInativo>;
   public listStatusSimNao: Array<StatusSimNao>;
+  public listStatusEsperas: Array<StatusEspera>;
+  public listStatusVendido: Array<StatusVendido>;
   public listTiposUsuarios: Array<TipoUsuario>;
   public listTiposTelefones: Array<TipoTelefone>;
   public listTiposRevisoes: Array<TipoRevisao>;
@@ -52,6 +55,25 @@ export class AbstractComponent {
     this.listStatusSimNao.push(StatusSimNao.SIM);
     this.listStatusSimNao.push(StatusSimNao.NAO);
   }
+
+
+  /**
+   * Inicializa a Lista de Status.
+   */
+   private initListStatusEspera() {
+    this.listStatusEsperas = [];
+    this.listStatusEsperas.push(StatusEspera.SIM);
+    this.listStatusEsperas.push(StatusEspera.NAO);
+  }
+
+   /**
+   * Inicializa a Lista de Status.
+   */
+    private initListStatusVendido() {
+      this.listStatusVendido = [];
+      this.listStatusVendido.push(StatusVendido.SIM);
+      this.listStatusVendido.push(StatusVendido.NAO);
+    }
 
   /**
    * Inicializa a Lista de Tipos de Usuário.

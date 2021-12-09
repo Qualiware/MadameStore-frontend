@@ -64,6 +64,42 @@ export class StatusSimNao {
   ) {}
 }
 
+export class StatusEspera {
+
+  public static readonly SIM: StatusEspera = new StatusEspera('S', 'Sim');
+
+  public static readonly NAO: StatusEspera = new StatusEspera('N', 'Não');
+
+  /**
+   * Construtor da classe.
+   *
+   * @param id
+   * @param descricao
+   */
+  constructor(
+    public id: string,
+    public descricao: string
+  ) {}
+}
+
+export class StatusVendido {
+
+  public static readonly SIM: StatusVendido = new StatusVendido('S', 'Sim');
+
+  public static readonly NAO: StatusVendido = new StatusVendido('N', 'Não');
+
+  /**
+   * Construtor da classe.
+   *
+   * @param id
+   * @param descricao
+   */
+  constructor(
+    public id: string,
+    public descricao: string
+  ) {}
+}
+
 /**
  * Classe que disponibiliza as constantes de Tipos de Usuário na aplicação.
  *

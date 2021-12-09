@@ -15,22 +15,15 @@ export class FiltroVendaDTO {
    * @param idProduto
    * @param valorTotal
    * @param dataVenda
-<<<<<<< HEAD
    *
-=======
-   * @param quantidade
->>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
    *
    */
   constructor(
     public idProduto?: number,
     public valorTotal?: DoubleRange,
     public dataVenda?: string,
-<<<<<<< HEAD
-
-=======
-    public quantidade?: number
->>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
+    public statusVendido?:boolean,
+    public statusEspera?:boolean
   ) { }
 
   /**
@@ -67,13 +60,15 @@ export class FiltroVendaDTO {
       params = params.append('valorTotal', this.valorTotal.toString() );
     }
 
-<<<<<<< HEAD
-=======
-    if (this.quantidade) {
-      params = params.append('quantidade', this.quantidade.toString() );
+
+    if (this.statusVendido) {
+      params = params.append('statusVendido', this.statusVendido ? 'true' : 'false');
     }
 
->>>>>>> 4ee0625b4227de64aed867634b7d78fd0d43ef70
+    if (this.statusEspera) {
+      params = params.append('statusEspera', this.statusEspera ? 'true' : 'false');
+    }
+
     return params;
   }
 }
