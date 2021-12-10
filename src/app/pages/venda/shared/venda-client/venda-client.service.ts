@@ -60,6 +60,13 @@ export class VendaClientService {
     return result;
   }
 
+  public alterarProduto(venda: any): Observable<any> {
+    let result: Observable<any> = null;
+      result = this.http.put(`${environment.urlApi}/venda/alterar/${venda.id}`, venda);
+
+    return result;
+  }
+
   /**
    * Torna Venda o Venda pelo 'id' informado (é Venda=true).
    *

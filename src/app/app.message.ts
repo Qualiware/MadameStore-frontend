@@ -240,8 +240,11 @@ export class AppMessage implements InternacionalizacaoResource {
         "Usu\u00E1rio n\u00E3o tem permiss\u00E3o de acesso a funcionalidade acessada.",
       MSG045: "Confirmar Exclus\u00E1o?",
       MSG046: "Tornar cadastro Amigo?",
-      MSG047: "Deixar de ser Amigo do cadastro?",
       MSG048:"Não possui produto suficiente",
+      MSG047: 'Deixar de estar concluida?',
+      MSG060: 'Deixar de estar pendente?',
+      MSG061: 'Transformar venda em pendente?',
+      MSG062: 'Transformar venda em concluida?',
 
       // Validation
       required: "Campo obrigat\u00F3rio n\u00E3o preenchido.",

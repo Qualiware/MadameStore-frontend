@@ -1,3 +1,4 @@
+import { ProdutoListResolve } from './../../produto/shared/produto-client/produto-list.resolve';
 import { StatusEspera } from './../../../shared/app.constantes';
 import { ClienteClientService } from './../../cliente/shared/cliente-client/cliente-client.service';
 import { ItemVendaClientService } from './../../../shared/services/item-venda-client/item-venda-client.service';
@@ -39,7 +40,9 @@ export class VendaFormComponent {
   public submittedVenda: boolean;
   public submittedProduto: boolean;
   public valorVenda?: Number;
-
+  public QuantidaParaAlteração?:Number;
+  public Number?:String;
+  public bool?: Boolean;
 
   public clientes: any[];
 
@@ -192,14 +195,33 @@ export class VendaFormComponent {
    * Remove o Produto da lista de produtos do Usuário.
    *
    * @param produto
+   *
+   * Alterei com adição do service, html
    */
-  public removerProduto(produto: any) {
-    this.messageService.addConfirmYesNo("MSG006", () => {
+  public removerProduto(produto: any, venda:any ) {
+     this.bool=false;
+      this.messageService.addConfirmYesNo("MSG006", () => {
+
       const index = this.produtosVinculados.indexOf(produto);
       this.produtosVinculados.splice(index, 1);
       this.dataSourceProdutos.data = this.produtosVinculados;
-      this.messageService.addMsgSuccess("MSG007");
+      this.vendaClientService.alterarProduto(venda).subscribe(
+        () => {
+
+          this.messageService.addMsgSuccess("MSG007");
+        },
+        (error) => {
+          this.messageService.addMsgDanger(error);
+        }
+      );
+
+
+
     });
+
+
+
+
   }
 
   /**
@@ -288,7 +310,7 @@ export class VendaFormComponent {
    * @param amigo
    */
   private tornarVendido(venda: any): void {
-    this.messageService.addConfirmYesNo('MSG046', () => {
+    this.messageService.addConfirmYesNo('MSG062', () => {
       this.vendaClientService.tornarVendido(venda.id).subscribe(() => {
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
@@ -351,7 +373,7 @@ export class VendaFormComponent {
    * @param amigo
    */
   private tornarEspera(venda: any): void {
-    this.messageService.addConfirmYesNo('MSG046', () => {
+    this.messageService.addConfirmYesNo('MSG061', () => {
       this.vendaClientService.tornarVendaEspera(venda.id).subscribe(() => {
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
@@ -378,7 +400,7 @@ export class VendaFormComponent {
    * @param amigo
    */
   private deixarEspera(venda: any): void {
-    this.messageService.addConfirmYesNo('MSG047', () => {
+    this.messageService.addConfirmYesNo('MSG060', () => {
       this.vendaClientService.deixarVendaEspera(venda.id).subscribe(() => {
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
