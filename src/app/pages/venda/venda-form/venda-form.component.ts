@@ -199,7 +199,7 @@ export class VendaFormComponent {
    * Alterei com adição do service, html
    */
   public removerProduto(produto: any, venda:any ) {
-     this.bool=false;
+
       this.messageService.addConfirmYesNo("MSG006", () => {
 
       const index = this.produtosVinculados.indexOf(produto);

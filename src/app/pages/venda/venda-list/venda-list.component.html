@@ -130,7 +130,7 @@
                         <span class="mat-body-strong" >{{ 'LABEL_VALORTOTAL' | i18n}} :</span>
                       </div>
                       <div >
-                         {{element.valorTotal}}
+                         {{element.quantidadeVendida}}
                       </div>
                     </div>
                   </mat-cell>
@@ -182,6 +182,7 @@
                            fxLayoutGap.lt-sm="1">
                         <mat-slide-toggle [(ngModel)]="element.statusEspera" (change)="alterarStatusVendaEspera(element)"
                                           title="{{ (element.statusEspera ? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
+                                          [disabled]="element.statusVendido"
                                           *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')">
                         </mat-slide-toggle>
                         <span *ngIf="!securityService.hasRoles('ROLE_VENDA_ALTERAR')">
@@ -203,11 +204,21 @@
                       </div>
                       <div fxFlex fxLayoutAlign.gt-xs="center center" fxLayoutAlign.lt-sm="start center"
                            fxLayoutGap.lt-sm="1">
-                        <mat-slide-toggle [(ngModel)]="element.statusVendido" (change)="alterarStatusVendido(element)"
+                        <mat-slide-toggle
+                                           [(ngModel)]="element.statusVendido" (change)="alterarStatusVendido(element) "
+                                          [disabled]="element.statusVendido"
                                           title="{{ (element.statusVendido ? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
-                                          *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')">
+                                          *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')"
+
+                                          >
                         </mat-slide-toggle>
-                        <span *ngIf="!securityService.hasRoles('ROLE_VENDA_ALTERAR')">
+                       <!--<mat-slide-toggle [(ngModel)]="element.statusVendido" (change)="alterarStatusVendido(element) "
+                        *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR') && element.statusVendido==true"
+                        title="{{ (element.statusVendido ? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
+                        >
+                        </mat-slide-toggle>-->
+                        <span *ngIf="!securityService.hasRoles('ROLE_VENDA_ALTERAR') "
+      >
                                         {{(element.statusVendido ? 'LABEL_SIM' : 'LABEL_NAO') | i18n}}
                                     </span>
                       </div>
@@ -232,14 +243,14 @@
                           <mat-icon>search</mat-icon>
                         </a>
 
-                        <a mat-mini-fab title="{{'LABEL_ALTERAR_VENDA' | i18n}}" class="btn-primary"
+                      <!--  <a mat-mini-fab title="{{'LABEL_ALTERAR_VENDA' | i18n}}" class="btn-primary"
                            *ngIf="securityService.hasRoles('ROLE_VENDA_ALTERAR')"
                            [routerLink]="['/administracao/venda', element.id, 'alterar']">
                           <mat-icon>edit</mat-icon>
-                        </a>
+                        </a>-->
 
-                        <a mat-mini-fab title="{{'LABEL_VENDA_AMIGO' | i18n}}" class="btn-primary"
-                           *ngIf="securityService.hasRoles('ROLE_VENDA_REMOVER')"
+                        <a mat-mini-fab title="{{'LABEL_VENDA_REMOVER' | i18n}}" class="btn-primary"
+                           *ngIf="securityService.hasRoles('ROLE_VENDA_REMOVER') && element.statusVendido==false"
                            (click)="remover(element)">
                           <mat-icon>close</mat-icon>
                         </a>
