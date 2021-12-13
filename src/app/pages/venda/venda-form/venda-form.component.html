@@ -38,11 +38,9 @@
             </mat-form-field>
 
             <mat-form-field fxFlex>
-              <mat-label>{{'LABEL_VALROTOTAL' | i18n}}</mat-label>
-              <input matInput placeholder="{{'LABEL_INFORME_VALORTOTAL' | i18n}}" title="{{'LABEL_VALORTOTAL' | i18n}}" type="valorTotal"
-                     [(ngModel)]="venda.valorTotal" name="valorTotal" required maxlength="50"
-                     [disabled]="acaoSistema.isAcaoVisualizar()"
-              >
+              <mat-label>{{'teste' | i18n}}</mat-label>
+              <mat-label>{{ venda.valorTotal | 0 }}</mat-label>
+
               <mat-label>{{ "LABEL_CLIENTE" | i18n }}</mat-label>
               <mat-select
                 placeholder="{{ 'LABEL_CLIENTE' | i18n }}"

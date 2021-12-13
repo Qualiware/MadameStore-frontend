@@ -17,6 +17,7 @@ import { VendaClientService } from "../shared/venda-client/venda-client.service"
 import { ProdutoClientService } from "../../produto/shared/produto-client/produto-client.service";
 import { exit } from 'process';
 import { isProtractorLocator } from 'protractor/built/locators';
+import { AnimationStyleMetadata } from '@angular/animations';
 
 
 /**
@@ -43,6 +44,7 @@ export class VendaFormComponent {
   public QuantidaParaAlteração?:Number;
   public Number?:String;
   public bool?: Boolean;
+  public teste: string;
 
   public clientes: any[];
 
@@ -77,10 +79,13 @@ export class VendaFormComponent {
     private vendaClientService: VendaClientService,
     public itemVenda: ItemVendaClientService
   ) {
+
+    this.teste = 'aoba';
     this.acaoSistema = new AcaoSistema(route);
     this.dataSourceProdutos = new MatTableDataSource<any>();
     this.itemVendas=route.snapshot.data.itemVendas;
     this.clientes = route.snapshot.data.clientes;
+
 
     if (this.acaoSistema.isAcaoVisualizar()) {
       this.displayedColumns = ["nomeProdutoVinculado","valorProduto","quantidade"];
@@ -98,8 +103,10 @@ export class VendaFormComponent {
       // Inicializa o Usuário para Inclusão
       this.venda = {
         itemVendas:[],
-
+        valorTotal: 0
       };
+
+
     }
 
     if (this.acaoSistema.isAcaoAlterar()) {
@@ -176,8 +183,11 @@ export class VendaFormComponent {
           console.log(produtoInclusao.produto.valorProduto);
           this.dataSourceProdutos.data = this.produtosVinculados;
 
+          this.venda.valorTotal += Number(produtoInclusao.produto.preco) * Number(this.itemVendas);
+
            form.onReset();
            this.produtoInclusao = {};
+
 
 
 

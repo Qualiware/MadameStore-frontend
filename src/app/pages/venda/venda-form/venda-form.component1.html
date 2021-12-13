@@ -102,7 +102,7 @@
           <mat-label>{{'LABEL_VALROTOTAL' | i18n}}</mat-label>
           <input matInput placeholder="{{'LABEL_INFORME_VALORTOTAL' | i18n}}" title="{{'LABEL_VALORTOTAL' | i18n}}" type="valorTotal"
                  [(ngModel)]="venda.valorTotal" name="valorTotal" required maxlength="50"
-                 [disabled]="acaoSistema.isAcaoVisualizar()"
+                 [disabled]="true"
           >
 
           <mat-error validationMessage [submitted]="submittedVenda"></mat-error>
