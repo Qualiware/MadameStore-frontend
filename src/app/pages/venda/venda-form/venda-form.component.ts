@@ -180,7 +180,6 @@ export class VendaFormComponent {
 
         });
 
-          console.log(produtoInclusao.produto.valorProduto);
           this.dataSourceProdutos.data = this.produtosVinculados;
 
           this.venda.valorTotal += Number(produtoInclusao.produto.preco) * Number(this.itemVendas);
@@ -225,6 +224,8 @@ export class VendaFormComponent {
         }
       );
 
+
+      this.venda.valorTotal -= Number(produto.quantidadeVendida) * Number(produto.preco)
 
 
     });
