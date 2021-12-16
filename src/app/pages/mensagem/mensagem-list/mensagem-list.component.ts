@@ -36,7 +36,7 @@ export class MensagemListComponent extends AbstractComponent implements OnInit {
 
   public bool:boolean=true;
 
-  public displayedColumns = [ 'dataAlteracao','descricao', 'acoes'];
+  public displayedColumns = [ 'dataAlteracao','descricao','quantidade','nomeProduto', 'acoes'];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 

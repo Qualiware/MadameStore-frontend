@@ -50,14 +50,11 @@ export class MensagemClientService {
    */
   public salvar(mensagem: any): Observable<any> {
     let result: Observable<any> = null;
-
-    if (mensagem.id) {
-
-      result = this.http.put(`${environment.urlApi}/mensagem/${mensagem.id}`, mensagem);
-    } else {
+      console.log(mensagem);
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       result = this.http.post(`${environment.urlApi}/mensagem/`, mensagem);
 
-    }
+
     return result;
   }
 

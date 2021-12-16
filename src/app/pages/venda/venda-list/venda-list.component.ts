@@ -29,6 +29,8 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
 
   public dataSource: MatTableDataSource<any>;
 
+  public statusEsperas:any[];
+
   public dataVenda: Date = null;
 
   public clientes: any[];
@@ -181,12 +183,15 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
    * @param venda
    */
   private tornarVendido(venda: any): void {
-    this.messageService.addConfirmYesNo('MSG046', () => {
+    this.messageService.addConfirmYesNo('MSG062', () => {
       this.bool=false;
       this.vendaClientService.tornarVendido(venda.id).subscribe(() => {
-        //this.pesquisar(this.filtroDTO);
-          //this.deixarVendaEspera(venda);
-          window.location.reload();
+
+          this.filtroDTO.statusVendido = this.filtroDTO.statusVendido ? this.filtroDTO.statusVendido : true;
+          this.pesquisar(this.filtroDTO);
+         // window.location.reload();
+
+
 
 
         this.messageService.addMsgSuccess('MSG007');

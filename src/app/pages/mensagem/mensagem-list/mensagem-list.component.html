@@ -6,21 +6,14 @@
     </div>
     <div fxFlex fxLayoutAlign="end center">
       <button class="mat-button mat-raised-button mat-accent mat-button-base"
-              title="{{'LABEL_ADICIONAR_BOTAR' | i18n}}" routerLink="/administracao/mensagem/adicionar"
+              title="{{'LABEL_ADICIONAR_BOTAR' | i18n}}" routerLink="/administracao/mensagem/incluir"
             >
         {{'LABEL_ADICIONAR_BOTAR' | i18n}}
       </button>
       <!-- *ngIf="securityService.hasRoles('ROLE_VENDA_INCLUIR')"-->
     </div>
 
-    <div fxFlex fxLayoutAlign="start center">
-      <button class="mat-button mat-raised-button mat-accent mat-button-base"
-              title="{{'LABEL_ADICIONAR_RETIRAR' | i18n}}" routerLink="/administracao/mensagem/retirar"
-            >
-        {{'LABEL_ADICIONAR_RETIRAR' | i18n}}
-      </button>
-      <!-- *ngIf="securityService.hasRoles('ROLE_VENDA_INCLUIR')"-->
-    </div>
+
   </div>
 
 <mat-card>

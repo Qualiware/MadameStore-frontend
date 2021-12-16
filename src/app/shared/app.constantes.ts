@@ -100,6 +100,27 @@ export class StatusVendido {
   ) {}
 }
 
+
+export class TipoRetirada {
+
+  public static readonly PERDA: TipoRetirada = new TipoRetirada('1', 'Perda');
+  public static readonly FURTO: TipoRetirada = new TipoRetirada('2', 'Furto');
+  public static readonly QUEBRA: TipoRetirada = new TipoRetirada('3', 'Quebra');
+  public static readonly VALIDADE: TipoRetirada = new TipoRetirada ('4', 'Validade');
+  public static readonly INCLUSAO: TipoRetirada = new TipoRetirada('5', 'Inclusao');
+
+  /**
+   * Construtor da classe.
+   *
+   * @param id
+   * @param descricao
+   */
+  constructor(
+    public id: string,
+    public descricao: string
+  ) {}
+}
+
 /**
  * Classe que disponibiliza as constantes de Tipos de Usuário na aplicação.
  *

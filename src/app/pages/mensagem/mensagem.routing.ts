@@ -18,13 +18,32 @@ import { MensagemResolve } from './shared/mensagem.resolve';
  */
 export const MensagemRoutes: Routes = [
   {
-    path: 'adicionar',
+    path: 'incluir',
     component: MensagemFormComponent,
     canActivate: [
       SecurityGuard
     ],
     data: {
-      acao: 'adicionar',
+      acao: 'incluir',
+      security: {
+        roles: [
+          'ROLE_PRODUTO_INCLUIR'
+        ]
+      }
+    },
+    resolve: {
+      produto: ProdutoListResolve
+    }
+  },
+
+  {
+    path: 'incluir1',
+    component: MensagemFormComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'incluir1',
       security: {
         roles: [
           'ROLE_PRODUTO_INCLUIR'

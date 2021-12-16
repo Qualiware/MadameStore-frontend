@@ -7,7 +7,7 @@ import {
   FX_FLEX_GT_LG,
   FX_FLEX_XL,
   PAGINATOR_PAGE_SIZE,
-  StatusAtivoInativo, TipoUsuario, TipoTelefone, TipoRevisao, StatusSimNao
+  StatusAtivoInativo, TipoUsuario, TipoTelefone, TipoRevisao, StatusSimNao, TipoRetirada
 } from '../app.constantes';
 
 /**
@@ -29,6 +29,7 @@ export class AbstractComponent {
   public listTiposUsuarios: Array<TipoUsuario>;
   public listTiposTelefones: Array<TipoTelefone>;
   public listTiposRevisoes: Array<TipoRevisao>;
+  public listTipoRetirada: Array<TipoRetirada>;
 
   constructor() {
     this.initListStatusAtivosInativos();
@@ -36,6 +37,9 @@ export class AbstractComponent {
     this.initListTiposTelefones();
     this.initListTiposRevisoes();
     this.initListStatusSimNao();
+    this.initListStatusEspera();
+    this.initListStatusVendido();
+    this.initListTipoRetirada();
   }
 
   /**
@@ -91,6 +95,15 @@ export class AbstractComponent {
     this.listTiposTelefones.push(TipoTelefone.CELULAR);
     this.listTiposTelefones.push(TipoTelefone.COMERCIAL);
     this.listTiposTelefones.push(TipoTelefone.RESIDENCIAL);
+  }
+
+  private initListTipoRetirada() {
+    this.listTipoRetirada = [];
+    this.listTipoRetirada.push(TipoRetirada.PERDA);
+    this.listTipoRetirada.push(TipoRetirada.FURTO);
+    this.listTipoRetirada.push(TipoRetirada.QUEBRA);
+    this.listTipoRetirada.push(TipoRetirada.VALIDADE);
+    this.listTipoRetirada.push(TipoRetirada.INCLUSAO);
   }
 
   /**
