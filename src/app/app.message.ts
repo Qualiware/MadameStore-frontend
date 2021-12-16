@@ -58,7 +58,9 @@ export class AppMessage implements InternacionalizacaoResource {
 
       LABEL_PESQUISAR_VENDA: "Pesquisar Venda",
       LABEL_VALORTOTAL: "Valor da venda",
+
       LABEL_DATAVENDA: "Data da venda",
+      LABEL_NOME_CLIENTE: "Nome do Cliente",
       LABEL_INFORME_VALORTOTAL: "Informe valor da venda",
       LABEL_INFORME_QNTVENDIDA: "Informe quantidade vendida",
 
