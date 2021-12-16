@@ -58,6 +58,9 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
     const vendas = route.snapshot.data.vendas;
     this.dataSource = new MatTableDataSource<any>(vendas);
     this.clientes= route.snapshot.data.clientes;
+
+    console.log(vendas)
+
   }
 
   /**
@@ -99,6 +102,7 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
 
   public alterarStatusVendaEspera(venda: any): void {
     console.log('alterastatus:', venda);
+
     if (venda.statusEspera) {
       this.tornarVendaEspera(venda);
     } else {
