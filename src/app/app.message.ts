@@ -55,12 +55,15 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_QUANTIDADE_VENDIDA: "Qnt. Vendida",
       LABEL_DATA_CADASTRO: "Data do Cadastro",
       LABEL_TIPO_PRODUTO: "Tipo do Produto",
+       LABEL_ADICIONAR_BOTAR: "Adicionar produto",
 
       LABEL_PESQUISAR_VENDA: "Pesquisar Venda",
       LABEL_VALORTOTAL: "Valor da venda",
       LABEL_DATAVENDA: "Data da venda",
       LABEL_INFORME_VALORTOTAL: "Informe valor da venda",
       LABEL_INFORME_QNTVENDIDA: "Informe quantidade vendida",
+
+      LABEL_ADICIONAR_RETIRAR: "Retirar produto",
 
       // Mensagem sitema
       MSG_DESEJA_SAIR_SISTEMA: "Deseja sair do sistema?",

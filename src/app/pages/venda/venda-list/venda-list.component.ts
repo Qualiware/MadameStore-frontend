@@ -33,6 +33,8 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
 
   public clientes: any[];
 
+  public bool:boolean=true;
+
   public displayedColumns = ['valorTotal', 'dataVenda', 'quantidade','statusEspera','statusVendido', 'acoes'];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -162,6 +164,7 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
     console.log('alterastatus:', venda);
     if (venda.statusVendido) {
       this.tornarVendido(venda);
+
       //window.location.reload();
     } else {
       this.deixarVendido(venda);
@@ -175,6 +178,7 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
    */
   private tornarVendido(venda: any): void {
     this.messageService.addConfirmYesNo('MSG046', () => {
+      this.bool=false;
       this.vendaClientService.tornarVendido(venda.id).subscribe(() => {
         //this.pesquisar(this.filtroDTO);
           //this.deixarVendaEspera(venda);

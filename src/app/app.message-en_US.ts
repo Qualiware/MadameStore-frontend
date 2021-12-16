@@ -118,7 +118,8 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_ULTIMO_NOME: 'Último Nome',
       LABEL_INFORME_ULTIMO_NOME: 'Informe o Último Nome',
       LABEL_VINCULAR: 'Vincular',
-
+      LABEL_ADICIONAR_RETIRAR: 'Retirar produto',
+      LABEL_ADICIONAR_BOTAR: 'Adicionar produto',
       // Textos Auditoria
       LABEL_LISTAR_AUDITORIA: 'Lista de Auditorias',
       LABEL_PESQUISAR_AUDITORIA: 'Pesquisar Log de Auditoria',
