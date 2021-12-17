@@ -192,7 +192,7 @@ export class VendaFormComponent {
 
       } else {
         if(this.itemVendas<=produtoInclusao.produto.quantidade)
-        this.messageService.addMsgDanger("MSG011");
+        this.messageService.addMsgDanger("MSG063");
 
         if(this.itemVendas>produtoInclusao.produto.quantidade)
         this.messageService.addMsgDanger("MSG048");

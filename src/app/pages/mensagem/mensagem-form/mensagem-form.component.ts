@@ -103,7 +103,7 @@ export class MensagemFormComponent extends AbstractComponent  {
     if (form.valid) {
 
       this.mensagemClientService.salvar(mensagem).subscribe(() => {
-        console.log(mensagem+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
           this.router.navigate(['/administracao/mensagem']);
           this.messageService.addMsgSuccess('MSG007');
         }, error => {

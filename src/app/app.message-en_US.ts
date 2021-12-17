@@ -175,6 +175,7 @@ export class AppMessage implements InternacionalizacaoResource {
       MSG009: 'Usu\u00E1rio n\u00E3o tem permiss\u00E3o de acesso ao sistema desejado.',
       MSG010: 'Confirmar operação?',
       MSG011: 'O Grupo informado já foi adicionado ao Usuário.',
+      MSG063: 'O Produto informado já foi adicionado ao Carrinho.',
       MSG012: 'Nenhum usuário foi selecionado.',
       MSG013: 'O CPF informado já está em uso.',
       MSG014: 'O Telefone informado já foi adicionado ao Usuário.',
