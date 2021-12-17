@@ -238,8 +238,8 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
   private remover(venda: any): void {
     this.messageService.addConfirmYesNo('MSG045', () => {
       this.vendaClientService.remover(venda).subscribe(() => {
-        this.filtroDTO.dataVenda = this.filtroDTO.dataVenda ? this.filtroDTO.dataVenda : '%';
-        this.pesquisar(this.filtroDTO);
+        this.filtroDTO.statusVendido = this.filtroDTO.statusVendido ? this.filtroDTO.statusVendido : true;
+          this.pesquisar(this.filtroDTO);
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
         venda.status = false;
