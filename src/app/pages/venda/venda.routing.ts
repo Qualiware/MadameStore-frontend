@@ -1,3 +1,4 @@
+import { ClienteListResolve } from './../cliente/shared/cliente-client/cliente-list.resolve';
 import { ItemVendaClientResolve } from './../../shared/services/item-venda-client/item-venda-client.resolve';
 import {Routes} from '@angular/router';
 import {SecurityGuard} from '../../shared/security/security.guard';
@@ -30,6 +31,8 @@ export const VendaRoutes: Routes = [
       }
     },
     resolve: {
+
+      clientes: ClienteListResolve
     }
   },
   {
@@ -47,7 +50,8 @@ export const VendaRoutes: Routes = [
     },
     resolve: {
       vendas: VendaListResolve,
-      itemVenda: ItemVendaClientResolve
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve
     }
   },
   {
@@ -66,7 +70,8 @@ export const VendaRoutes: Routes = [
     },
     resolve: {
       venda: VendaResolve,
-      itemVenda: ItemVendaClientResolve
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve
     }
   },
   {
@@ -85,12 +90,32 @@ export const VendaRoutes: Routes = [
     },
     resolve: {
       venda: VendaResolve,
-      itemVenda: ItemVendaClientResolve
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve
     }
   },
   {
     path: '',
     redirectTo: 'listar',
     pathMatch: 'full'
+  },
+  {
+    path: 'cssalterar',
+    component: VendaFormComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'incluir',
+      security: {
+        roles: [
+          'ROLE_VENDA_INCLUIR'
+        ]
+      }
+    },
+    resolve: {
+
+      clientes: ClienteListResolve
+    }
   }
 ];

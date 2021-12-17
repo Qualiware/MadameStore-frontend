@@ -1,3 +1,4 @@
+import { ClienteListResolve } from './../../../cliente/shared/cliente-client/cliente-list.resolve';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
@@ -17,7 +18,8 @@ import {VendaListResolve} from './venda-list.resolve';
   providers: [
     VendaClientService,
     VendaResolve,
-    VendaListResolve
+    VendaListResolve,
+    ClienteListResolve
   ]
 })
 export class VendaClientModule { }

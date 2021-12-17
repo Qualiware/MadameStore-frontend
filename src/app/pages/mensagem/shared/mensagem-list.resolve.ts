@@ -4,8 +4,10 @@ import {Injectable, SystemJsNgModuleLoader} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, Router} from '@angular/router';
 
 import {MessageService} from 'src/app/shared/message/message.service';
-import {VendaClientService} from './venda-client.service';
-import { FiltroVendaDTO } from '../../../../shared/dto/filtro-venda.dto';
+
+import { FiltroMensagemDTO } from 'src/app/shared/dto/filtro-mensagem.dto';
+import { MensagemClientService } from './mensagem-client.service';
+
 
 /**
  * Classe resolve responsável pela busca das informações de Usuário conforme o id.
@@ -13,18 +15,18 @@ import { FiltroVendaDTO } from '../../../../shared/dto/filtro-venda.dto';
  * @author Guiliano Rangel (UEG)
  */
 @Injectable()
-export class VendaListResolve implements Resolve<any> {
+export class MensagemListResolve implements Resolve<any> {
 
   /**
    * Construtor da classe.
    *
    * @param router
-   * @param vendaClientService
+   * @param mensagemClientService
    * @param messageService
    */
   constructor(
     private router: Router,
-    private vendaClientService: VendaClientService,
+    private mensagemClientService: MensagemClientService,
     private messageService: MessageService
   ) { }
 
@@ -37,10 +39,10 @@ export class VendaListResolve implements Resolve<any> {
     const id = route.params.id;
 
     return new Observable(observer => {
-      const filtro: FiltroVendaDTO = new FiltroVendaDTO();
-      filtro.dataVenda = "2000/01/12";
+      const filtro: FiltroMensagemDTO = new FiltroMensagemDTO();
+      filtro.dataAlteracao = "2000/01/12";
 
-      this.vendaClientService.getByFiltro(filtro).subscribe(
+      this.mensagemClientService.getByFiltro(filtro).subscribe(
         data => {
           observer.next(data);
           observer.complete();

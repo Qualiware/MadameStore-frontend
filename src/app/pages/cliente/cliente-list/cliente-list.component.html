@@ -141,39 +141,6 @@
                   </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="quantidade">
-                  <mat-header-cell
-                    class="style-header"
-                    fxHide.xs="true"
-                    fxLayoutAlign="start center"
-                    *matHeaderCellDef
-                  >
-                    {{ "LABEL_QUANTIDADE" | i18n }}
-                  </mat-header-cell>
-                  <mat-cell
-                    fxFlex.lt-sm="100"
-                    ngClass.gt-sm="style-column"
-                    fxLayoutAlign="start center"
-                    *matCellDef="let element"
-                  >
-                    <div fxFlex fxLayout="row">
-                      <div
-                        fxFlex="130px"
-                        fxHide.gt-xs="true"
-                        fxLayoutAlign="end center"
-                        fxLayoutGap.lt-sm="1"
-                      >
-                        <span class="mat-body-strong"
-                          >{{ "LABEL_QUANTIDADE" | i18n }} :</span
-                        >
-                      </div>
-                      <div>
-                        {{ element.quantidade }}
-                      </div>
-                    </div>
-                  </mat-cell>
-                </ng-container>
-
                 <ng-container matColumnDef="telefone">
                   <mat-header-cell
                     class="style-header"
@@ -240,44 +207,7 @@
                   </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="dataCadastro">
-                  <mat-header-cell
-                    fxFlex="15"
-                    class="style-header"
-                    fxHide.xs="true"
-                    fxLayoutAlign="none center"
-                    *matHeaderCellDef
-                  >
-                    {{ "LABEL_DATA_CADASTRO" | i18n }}
-                  </mat-header-cell>
-                  <mat-cell
-                    fxFlex="15"
-                    fxFlex.lt-sm="100"
-                    ngClass.gt-sm="style-column"
-                    fxLayoutAlign="start center"
-                    *matCellDef="let element"
-                  >
-                    <div fxFlex fxLayout="row">
-                      <div
-                        fxFlex="130px"
-                        fxHide.gt-xs="true"
-                        fxLayoutAlign="end center"
-                      >
-                        <span class="mat-body-strong text-right"
-                          >{{ "LABEL_DATA_CADASTRO" | i18n }} :</span
-                        >
-                      </div>
-                      <div
-                        fxFlex
-                        fxLayoutAlign.gt-xs="center center"
-                        fxLayoutAlign.lt-sm="start center"
-                        fxLayoutGap.lt-sm="1"
-                      >
-                        {{ element.dataCadastro | date: "dd/MM/yyyy" }}
-                      </div>
-                    </div>
-                  </mat-cell>
-                </ng-container>
+
 
                 <ng-container matColumnDef="acoes">
                   <mat-header-cell

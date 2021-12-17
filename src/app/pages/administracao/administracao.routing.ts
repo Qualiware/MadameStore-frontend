@@ -111,6 +111,11 @@ export const AdministracaoRoutes: Routes = [
         loadChildren: () =>
           import("../produto/produto.module").then((m) => m.ProdutoModule),
       },
+       {
+        path: "mensagem",
+        loadChildren: () =>
+          import("../mensagem/mensagem.module").then((m) => m.MensagemModule),
+      },
       {
         path: "venda",
         loadChildren: () =>

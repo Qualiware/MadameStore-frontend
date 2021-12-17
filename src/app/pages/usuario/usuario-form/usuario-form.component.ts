@@ -184,6 +184,7 @@ export class UsuarioFormComponent {
       if (this.gruposVinculados.length > 0) {
         usuario.grupos = this.gruposVinculados;
         usuario.telefones = this.telefonesUsuario;
+        console.log(usuario);
 
         this.usuarioClientService.salvar(usuario).subscribe(
           () => {

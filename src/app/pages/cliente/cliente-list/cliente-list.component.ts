@@ -34,7 +34,6 @@ export class ClienteListComponent extends AbstractComponent implements OnInit {
     "nome",
     "telefone",
     "email",
-    "quantidade",
     "acoes",
   ];
 

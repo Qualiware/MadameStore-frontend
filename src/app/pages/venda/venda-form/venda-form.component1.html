@@ -11,7 +11,7 @@
   <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
 
     <form #formVenda="ngForm">
-      <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
+      <mat-card fxLayout="column" fxLayoutGap="2%" fxLayoutGap.xs="1%">
         <mat-card-title>
           <span>{{'LABEL_DADOS_VENDA' | i18n}}</span>
         </mat-card-title>
@@ -27,79 +27,139 @@
 
           </div>
 
-          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
-            <mat-form-field fxFlex fxFlex.gt-xs="50" fxFlex.lt-sm="100">
-              <mat-label>{{'LABEL_DATAVENDA' | i18n}}</mat-label>
-              <input matInput [matDatepicker]="picker" [(ngModel)]="venda.dataVenda" name="dataVenda" readonly
-                     (focus)="picker.open()" (click)="picker.open()" placeholder="{{'LABEL_DATAVENDA' | i18n}}"
-                     [disabled]="acaoSistema.isAcaoVisualizar()">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
+          <div  fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <div class="content__title" fxFlex fxFlexAlign="start none">
+              <span>
+                Data da Venda
+              </span>
 
-            <mat-form-field fxFlex>
-              <mat-label>{{'teste' | i18n}}</mat-label>
-              <mat-label>{{ venda.valorTotal | 0 }}</mat-label>
+              <mat-form-field fxFlex fxFlex.gt-xs="50" fxFlex.lt-sm="100">
 
-              <mat-label>{{ "LABEL_CLIENTE" | i18n }}</mat-label>
-              <mat-select
-                placeholder="{{ 'LABEL_CLIENTE' | i18n }}"
-                title="{{ 'LABEL_CLIENTE' | i18n }}"
-                [(ngModel)]="venda.idCliente"
-                [disabled]="acaoSistema.isAcaoVisualizar()"
-                name="cliente"
-              >
-                <mat-option [value]="undefined">{{
-                  "LABEL_SELECIONE" | i18n
-                }}</mat-option>
-                <mat-option
-                  *ngFor="let cliente of clientes"
-                  [value]="cliente.id"
-                >
-                  {{ cliente.nome }}
-                </mat-option>
-              </mat-select>
-              <mat-error validationMessage [submitted]="submittedVenda"></mat-error>
+                  <div  class="content__title1" fxLayout="row" fxFlexAlign="start none" fxLayoutAlign.gt-xs="start none" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="venda.dataVenda" name="dataVenda" readonly
+                       (focus)="picker.open()" (click)="picker.open()"
+                       [disabled]="acaoSistema.isAcaoVisualizar()">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </div>
+              </mat-form-field>
+            </div>
 
 
-            </mat-form-field>
+
+
 
           </div>
+
+
+
 
 
         </mat-card-content>
       </mat-card>
+      <mat-card fxLayout="column" fxLayoutGap="4%" fxLayoutGap.xs="4%">
+        <div class="content__title" fxFlex fxFlexAlign="center end">
+        <span>
+          Nome Cliente
+        </span>
+        </div>
+        <div  class="content__title1" fxLayout="row" fxLayoutAlign.gt-xs="start center" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+        <mat-label>{{ "LABEL_CLIENTE" | i18n }}</mat-label>
+        <mat-select
+          placeholder="{{ 'LABEL_CLIENTE' | i18n }}"
+          title="{{ 'LABEL_CLIENTE' | i18n }}"
+          [(ngModel)]="venda.idCliente"
+          [disabled]="acaoSistema.isAcaoVisualizar()"
+          name="cliente"
+        >
+          <mat-option [value]="undefined">{{
+            "LABEL_SELECIONE" | i18n
+          }}</mat-option>
+          <mat-option
+            *ngFor="let cliente of clientes"
+            [value]="cliente.id"
+          >
+            {{ cliente.nome }}
+            <mat-error validationMessage [submitted]="submittedVenda"></mat-error>
+          </mat-option>
+        </mat-select>
 
+
+    </div>
+      </mat-card>
+
+
+      <mat-card fxLayout="column" fxLayoutGap="4%" fxLayoutGap.xs="5%">
+        <div class="content__title" fxFlex fxFlexAlign="center end">
+        <span>
+          Valor Total
+        </span>
+        </div>
+      <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+
+
+        <mat-form-field fxFlex>
+          <mat-label>{{'LABEL_VALROTOTAL' | i18n}}</mat-label>
+          <input matInput placeholder="{{'LABEL_INFORME_VALORTOTAL' | i18n}}" title="{{'LABEL_VALORTOTAL' | i18n}}" type="valorTotal"
+                 [(ngModel)]="venda.valorTotal" name="valorTotal" required maxlength="50"
+                 [disabled]="true"
+          >
+
+          <mat-error validationMessage [submitted]="submittedVenda"></mat-error>
+
+
+
+
+
+
+        </mat-form-field>
+
+      </div>
+      </mat-card>
+    -<mat-card fxLayout="column" fxLayoutGap="4%" fxLayoutGap.xs="5%">
+      <div fxLayout="row" fxLayoutAlign.gt-xs="start center" fxLayout.lt-sm="column" fxLayoutGap="0.7%" fxLayoutGap.xs="7%">
+
+        <div fxLayout="column" fxLayoutAlign.gt-xs="start start" fxLayout.lt-sm="row" fxLayoutGap.lt-sm="3%" fxLayoutGap.gt-xs="7%"
+             *ngIf=" acaoSistema.isAcaoVisualizar() ">
+             <div class="content__title" fxFlex fxFlexAlign="center end">
+          <mat-label *ngIf=" acaoSistema.isAcaoVisualizar() && venda.statusVendido">
+            {{'LABEL_STATUS_VENDIDO' | i18n}}:</mat-label>
+            <mat-label *ngIf=" acaoSistema.isAcaoVisualizar() && venda.statusEspera">
+              {{'LABEL_STATUS_ESPERA' | i18n}}:</mat-label>
+            </div>
+          <mat-label
+          *ngIf=" acaoSistema.isAcaoVisualizar() && venda.statusVendido">
+            {{(venda.statusVendido ? 'LABEL_INFORMACAO_VENDIDO_CORRETO' : 'LABEL_INFORMACAO_VENDIDO_INCORRETO') | i18n}}
+
+
+          </mat-label>
+          <mat-label
+          *ngIf=" acaoSistema.isAcaoVisualizar() && venda.statusEspera">
+          {{(venda.statusEspera ? 'LABEL_INFORMACAO_ESPERA_CORRETO' : 'LABEL_INFORMACAO_ESPERA_INCORRETO') | i18n}}
+        </mat-label>
+        </div>
+      </div>
+      </mat-card>
+
+     <!--  <mat-card fxLayout="column" fxLayoutGap="4%" fxLayoutGap.xs="5%">
       <div fxLayout="column" fxLayoutAlign.gt-xs="start start" fxLayout.lt-sm="row" fxLayoutGap.lt-sm="3%" fxLayoutGap.gt-xs="7%"
-                 *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoVisualizar()">
-              <mat-label>{{'LABEL_STATUS_AMIGO' | i18n}}:</mat-label>
-              <mat-slide-toggle [(ngModel)]="venda.statusEspera" (change)="alterarStatusEspera(venda)" name="statusEspera"
-                                *ngIf="acaoSistema.isAcaoAlterar() && securityService.hasRoles('ROLE_AMIGO_STATUS')"
-                                title="{{ (venda.statusEspera? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
-              >
-              </mat-slide-toggle>
-              <mat-label
-                *ngIf="acaoSistema.isAcaoVisualizar() || !securityService.hasRoles('ROLE_AMIGO_STATUS')">
-                {{(status.espera ? 'LABEL_SIM' : 'LABEL_NAO') | i18n}}
-              </mat-label>
-            </div>
-          </div>
+      *ngIf=" acaoSistema.isAcaoVisualizar()">
+   <mat-label>{{'LABEL_VENDA' | i18n}}:</mat-label>
+  <mat-slide-toggle [(ngModel)]="venda.statusEspera" (change)="alterarStatusEspera(venda)" name="statusEspera"
+                     *ngIf="acaoSistema.isAcaoVisualizar()&& securityService.hasRoles('ROLE_VENDA_ALTERAR')"
+                     title="{{ (venda.statusEspera? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
+   >
+   </mat-slide-toggle>
+   <mat-label
+     *ngIf="acaoSistema.isAcaoVisualizar() || !securityService.hasRoles('ROLE_VENDA_ALTERAR')">
+     {{(venda.statusEspera ? 'LABEL_INFORMACAO_ESPERA_CORRETO' : 'LABEL_INFORMACAO_ESPERA_INCORRETO') | i18n}}
+   </mat-label>
+ </div>
+ </mat-card>-->
 
-          <div fxLayout="column" fxLayoutAlign.gt-xs="start start" fxLayout.lt-sm="row" fxLayoutGap.lt-sm="3%" fxLayoutGap.gt-xs="7%"
-                 *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoVisualizar()">
-              <mat-label>{{'LABEL_STATUS_AMIGO' | i18n}}:</mat-label>
-              <mat-slide-toggle [(ngModel)]="venda.statusVendido" (change)="alterarStatusVendido(venda)" name="statusVendido"
-                                *ngIf="acaoSistema.isAcaoAlterar() && securityService.hasRoles('ROLE_AMIGO_STATUS')"
-                                title="{{ (venda.statusVendido? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}"
-              >
-              </mat-slide-toggle>
-              <mat-label
-                *ngIf="acaoSistema.isAcaoVisualizar() || !securityService.hasRoles('ROLE_AMIGO_STATUS')">
-                {{(venda.statusVendido ? 'LABEL_SIM' : 'LABEL_NAO') | i18n}}
-              </mat-label>
-            </div>
-          </div>
     </form>
+
+
 
     <form #formProduto="ngForm">
       <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
@@ -189,7 +249,7 @@
                         <span  class="mat-body-strong" >{{ 'LABEL_QUANTIDADE' | i18n}} :</span>
                       </div>
                       <div >
-                        {{element.quantidade}}
+                        {{element.quantidadeVendida}}
                       </div>
                     </div>
                   </mat-cell>
@@ -222,7 +282,7 @@
                       </div>
                       <div fxLayout="row" fxLayoutAlign="center center">
                         <a mat-mini-fab title="{{'LABEL_REMOVER_PRODUTO' | i18n}}" class="btn-primary"
-                           (click)="removerProduto(element)">
+                           (click)="removerProduto(element,venda)">
                           <mat-icon>delete</mat-icon>
                         </a>
                       </div>

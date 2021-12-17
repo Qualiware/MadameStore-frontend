@@ -64,6 +64,63 @@ export class StatusSimNao {
   ) {}
 }
 
+export class StatusEspera {
+
+  public static readonly SIM: StatusEspera = new StatusEspera('S', 'Sim');
+
+  public static readonly NAO: StatusEspera = new StatusEspera('N', 'Não');
+
+  /**
+   * Construtor da classe.
+   *
+   * @param id
+   * @param descricao
+   */
+  constructor(
+    public id: string,
+    public descricao: string
+  ) {}
+}
+
+export class StatusVendido {
+
+  public static readonly SIM: StatusVendido = new StatusVendido('S', 'Sim');
+
+  public static readonly NAO: StatusVendido = new StatusVendido('N', 'Não');
+
+  /**
+   * Construtor da classe.
+   *
+   * @param id
+   * @param descricao
+   */
+  constructor(
+    public id: string,
+    public descricao: string
+  ) {}
+}
+
+
+export class TipoRetirada {
+
+  public static readonly PERDA: TipoRetirada = new TipoRetirada('1', 'Perda');
+  public static readonly FURTO: TipoRetirada = new TipoRetirada('2', 'Furto');
+  public static readonly QUEBRA: TipoRetirada = new TipoRetirada('3', 'Quebra');
+  public static readonly VALIDADE: TipoRetirada = new TipoRetirada ('4', 'Validade');
+  public static readonly INCLUSAO: TipoRetirada = new TipoRetirada('5', 'Inclusao');
+
+  /**
+   * Construtor da classe.
+   *
+   * @param id
+   * @param descricao
+   */
+  constructor(
+    public id: string,
+    public descricao: string
+  ) {}
+}
+
 /**
  * Classe que disponibiliza as constantes de Tipos de Usuário na aplicação.
  *

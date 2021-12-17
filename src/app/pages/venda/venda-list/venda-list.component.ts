@@ -1,3 +1,4 @@
+import { StatusEspera, StatusVendido } from './../../../shared/app.constantes';
 /* tslint:disable:no-redundant-jsdoc */
 import {ActivatedRoute} from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
@@ -10,6 +11,7 @@ import {AbstractComponent} from '../../../shared/component/Abstract.component';
 import {formatDate} from '@angular/common';
 import { FiltroVendaDTO } from 'src/app/shared/dto/filtro-venda.dto';
 import { VendaClientService } from '../shared/venda-client/venda-client.service';
+import { Icu } from '@angular/compiler/src/i18n/i18n_ast';
 
 /**
  * Componente de listagem de Usuário.
@@ -27,9 +29,15 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
 
   public dataSource: MatTableDataSource<any>;
 
+  public statusEsperas:any[];
+
   public dataVenda: Date = null;
 
-  public displayedColumns = ['valorTotal', 'dataVenda', 'quantidade', 'acoes'];
+  public clientes: any[];
+
+  public bool:boolean=true;
+
+  public displayedColumns = ['valorTotal', 'dataVenda', 'quantidade','statusEspera','statusVendido', 'acoes'];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -51,6 +59,10 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
     super();
     const vendas = route.snapshot.data.vendas;
     this.dataSource = new MatTableDataSource<any>(vendas);
+    this.clientes= route.snapshot.data.clientes;
+
+    console.log(vendas)
+
   }
 
   /**
@@ -87,58 +99,137 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
     this.dataSource.data = [];
   }
 
-  /**
-   * Altera o status do Venda informado.
-   *
-   * @param venda
 
-  public alterarStatusVenda(venda: any): void {
+
+
+  public alterarStatusVendaEspera(venda: any): void {
     console.log('alterastatus:', venda);
-    if (venda.venda) {
-      this.tornarVenda(venda);
+
+    if (venda.statusEspera) {
+      this.tornarVendaEspera(venda);
     } else {
-      this.deixarVenda(venda);
+      this.deixarVendaEspera(venda);
     }
   }
-*/
+
   /**
    * Tornar Venda o Venda informado.
    *
    * @param venda
    */
-  private tornarVenda(venda: any): void {
+  private tornarVendaEspera(venda: any): void {
     this.messageService.addConfirmYesNo('MSG046', () => {
-      this.vendaClientService.tornarVenda(venda.id).subscribe(() => {
-        this.pesquisar(this.filtroDTO);
+
+      this.vendaClientService.tornarVendaEspera(venda.id).subscribe(() => {
+        //this.pesquisar(this.filtroDTO);
+          //this.deixarVendaEspera(venda);
+          window.location.reload();
+
+
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
-        venda.venda = false;
+        venda.statusEspera = false;
+        this.messageService.addMsgDanger(error);
+      });
+
+      if(venda.StatusVendido){
+        this.vendaClientService.deixarVendido(venda.id).subscribe(() => {
+          this.messageService.addMsgSuccess('MSG007');
+        }, error => {
+          venda.status = true;
+          this.messageService.addMsgDanger(error);
+        });}
+
+    }, () => {
+      venda.statusEspera = false;
+
+    });
+  }
+
+
+
+
+  private deixarVendaEspera(venda: any): void {
+    this.messageService.addConfirmYesNo('MSG047', () => {
+      this.vendaClientService.deixarVendaEspera(venda.id).subscribe(() => {
+        //this.pesquisar(this.filtroDTO);
+        this.messageService.addMsgSuccess('MSG007');
+      }, error => {
+        venda.statusEspera = true;
         this.messageService.addMsgDanger(error);
       });
     }, () => {
-      venda.venda = false;
+      venda.statusEspera = true;
     });
+  }
+
+
+
+
+  public alterarStatusVendido(venda: any): void {
+    console.log('alterastatus:', venda);
+    if (venda.statusVendido) {
+      this.tornarVendido(venda);
+
+      //window.location.reload();
+    } else {
+      this.deixarVendido(venda);
+    }
   }
 
   /**
-   * Deixar de ser Venda do cadastro informado.
+   * Tornar Venda o Venda informado.
    *
    * @param venda
+   */
+  private tornarVendido(venda: any): void {
+    this.messageService.addConfirmYesNo('MSG062', () => {
+      this.bool=false;
+      this.vendaClientService.tornarVendido(venda.id).subscribe(() => {
 
-  private deixarVenda(venda: any): void {
-    this.messageService.addConfirmYesNo('MSG047', () => {
-      this.vendaClientService.deixarAmizade(venda.id).subscribe(() => {
-        this.pesquisar(this.filtroDTO);
+          this.filtroDTO.statusVendido = this.filtroDTO.statusVendido ? this.filtroDTO.statusVendido : true;
+          this.pesquisar(this.filtroDTO);
+         // window.location.reload();
+
+
+
+
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
-        venda.venda = true;
+        venda.statusVendido = false;
+        this.messageService.addMsgDanger(error);
+      });
+
+      if(venda.StatusEspera){
+        this.vendaClientService.deixarVendaEspera(venda.id).subscribe(() => {
+          this.messageService.addMsgSuccess('MSG007');
+        }, error => {
+          venda.status = true;
+          this.messageService.addMsgDanger(error);
+        });}
+    }, () => {
+      venda.statusVendido = false;
+    });
+  }
+
+
+
+
+  private deixarVendido(venda: any): void {
+    this.messageService.addConfirmYesNo('MSG047', () => {
+      this.vendaClientService.deixarVendido(venda.id).subscribe(() => {
+       // this.pesquisar(this.filtroDTO);
+
+        this.messageService.addMsgSuccess('MSG007');
+      }, error => {
+        venda.statusVendido = true;
         this.messageService.addMsgDanger(error);
       });
     }, () => {
-      venda.venda = true;
+      venda.statusVendido = true;
     });
   }
-*/
+
   /**
    * remover o Venda informado.
    *
@@ -147,8 +238,8 @@ export class VendaListComponent extends AbstractComponent implements OnInit {
   private remover(venda: any): void {
     this.messageService.addConfirmYesNo('MSG045', () => {
       this.vendaClientService.remover(venda).subscribe(() => {
-        this.filtroDTO.dataVenda = this.filtroDTO.dataVenda ? this.filtroDTO.dataVenda : '%';
-        this.pesquisar(this.filtroDTO);
+        this.filtroDTO.statusVendido = this.filtroDTO.statusVendido ? this.filtroDTO.statusVendido : true;
+          this.pesquisar(this.filtroDTO);
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
         venda.status = false;

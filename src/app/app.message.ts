@@ -14,12 +14,18 @@ export class AppMessage implements InternacionalizacaoResource {
   constructor() {
     this.resource = {
       // LABEL
+
       LABEL_OK: "OK",
       LABEL_SAIR: "Sair",
       LABEL_SIM: "Sim",
       LABEL_NAO: "Não",
       LABEL_PESQUISAR: "Pesquisar",
       LABEL_LIMPAR: "Limpar",
+      LABEL_PERDA:'Perda',
+      LABEL_FURTO:'Furto',
+      LABEL_QUEBRA:'Quebra',
+      LABEL_VALIDADE:'Validade',
+      LABEL_INCLUSAO:'Inclusao',
       LABEL_SALVAR: "Salvar",
       LABEL_CANCELAR: "Cancelar",
       LABEL_VOLTAR: "Voltar",
@@ -54,12 +60,17 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_QUANTIDADE_VENDIDA: "Qnt. Vendida",
       LABEL_DATA_CADASTRO: "Data do Cadastro",
       LABEL_TIPO_PRODUTO: "Tipo do Produto",
+       LABEL_ADICIONAR_BOTAR: "Adicionar produto",
 
       LABEL_PESQUISAR_VENDA: "Pesquisar Venda",
       LABEL_VALORTOTAL: "Valor da venda",
+
       LABEL_DATAVENDA: "Data da venda",
+      LABEL_NOME_CLIENTE: "Nome do Cliente",
       LABEL_INFORME_VALORTOTAL: "Informe valor da venda",
       LABEL_INFORME_QNTVENDIDA: "Informe quantidade vendida",
+
+      LABEL_ADICIONAR_RETIRAR: "Retirar produto",
 
       // Mensagem sitema
       MSG_DESEJA_SAIR_SISTEMA: "Deseja sair do sistema?",
@@ -177,6 +188,13 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_DADOS_USUARIO: "Dados do Usuário",
       LABEL_IP_USUARIO: "IP do Usuário",
       LABEL_VISUALIZAR_IMPRESSAO: "Visualizar Impressão",
+      LABEL_STATUS_ESPERA:'Pendente',
+      LABEL_STATUS_VENDIDO:'Concluida',
+      LABEL_INFORMACAO_VENDIDO_CORRETO:'A venda foi concluida, para alterar volta a página',
+      LABEL_INFORMACAO_VENDIDO_INCORRETO:'A venda não foi concluido ainda, para alterar volta a página',
+      LABEL_INFORMACAO_ESPERA_CORRETO:'A venda está pendente, para concluir volta a página',
+      LABEL_INFORMACAO_ESPERA_INCORRETO:'A venda não está pendente, para mudar para pendente volte a página, mas se quiser cancelar essa venda, abra a página Cancelar Venda',
+
 
       MAP_OPTION_INCLUSAO: "Inclusão",
       MAP_OPTION_ALTERACAO: "Alteração",
@@ -206,6 +224,7 @@ export class AppMessage implements InternacionalizacaoResource {
         "Usu\u00E1rio n\u00E3o tem permiss\u00E3o de acesso ao sistema desejado.",
       MSG010: "Confirmar operação?",
       MSG011: "O Grupo informado já foi adicionado ao Usuário.",
+      MSG063: 'O Produto informado já foi adicionado ao Carrinho.',
       MSG012: "Nenhum usuário foi selecionado.",
       MSG013: "O CPF informado já está em uso.",
       MSG014: "O Telefone informado já foi adicionado ao Usuário.",
@@ -232,7 +251,11 @@ export class AppMessage implements InternacionalizacaoResource {
         "Usu\u00E1rio n\u00E3o tem permiss\u00E3o de acesso a funcionalidade acessada.",
       MSG045: "Confirmar Exclus\u00E1o?",
       MSG046: "Tornar cadastro Amigo?",
-      MSG047: "Deixar de ser Amigo do cadastro?",
+      MSG048:"Não possui produto suficiente",
+      MSG047: 'Deixar de estar concluida?',
+      MSG060: 'Deixar de estar pendente?',
+      MSG061: 'Transformar venda em pendente?',
+      MSG062: 'Transformar venda em concluida?',
 
       // Validation
       required: "Campo obrigat\u00F3rio n\u00E3o preenchido.",
