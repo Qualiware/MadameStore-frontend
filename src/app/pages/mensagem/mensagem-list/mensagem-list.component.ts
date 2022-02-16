@@ -36,7 +36,7 @@ export class MensagemListComponent extends AbstractComponent implements OnInit {
 
   public bool:boolean=true;
 
-  public displayedColumns = [ 'dataAlteracao','descricao','quantidade','nomeProduto', 'acoes'];
+  public displayedColumns = [ 'descricao','quantidade','nomeProduto','dataAlteracao', 'acoes'];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -56,7 +56,8 @@ export class MensagemListComponent extends AbstractComponent implements OnInit {
     private mensagemClientService: MensagemClientService
   ) {
     super();
-    const mensagem = route.snapshot.data.mensagens;
+    const mensagem = route.snapshot.data.mensagem;
+    console.log(mensagem);
     this.dataSource = new MatTableDataSource<any>(mensagem);
     this.produtos= route.snapshot.data.produtos;
   }

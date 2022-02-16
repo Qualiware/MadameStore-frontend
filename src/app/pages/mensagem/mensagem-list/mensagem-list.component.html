@@ -22,12 +22,6 @@
       <mat-card-content fxLayout="column" fxLayoutAlign.gt-xs="center" fxLayout.lt-sm="column">
 
 
-
-
-
-
-
-
         <ng-container matColumnDef="dataAlteracao">
           <mat-header-cell
             fxFlex="15"
@@ -113,7 +107,7 @@
 
 
 
-                <ng-container matColumnDef="dataMensagem">
+                <ng-container matColumnDef="dataAlteracao">
                   <mat-header-cell fxFlex="15" class="style-header" fxHide.xs="true" fxLayoutAlign="none center"
                                    *matHeaderCellDef> {{ 'LABEL_DATA_VENDA' | i18n}} </mat-header-cell>
                   <mat-cell fxFlex="15" fxFlex.lt-sm="100" ngClass.gt-sm="style-column" fxLayoutAlign="start center"
@@ -130,7 +124,39 @@
                   </mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="quantidade">
+                  <mat-header-cell fxFlex="15" class="style-header" fxHide.xs="true" fxLayoutAlign="none center"
+                                   *matHeaderCellDef> {{ 'LABEL_DATA_VENDA' | i18n}} </mat-header-cell>
+                  <mat-cell fxFlex="15" fxFlex.lt-sm="100" ngClass.gt-sm="style-column" fxLayoutAlign="start center"
+                            *matCellDef="let element">
+                    <div fxFlex fxLayout="row">
+                      <div fxFlex="130px" fxHide.gt-xs="true" fxLayoutAlign="end center">
+                        <span class="mat-body-strong text-right">{{ 'LABEL_DATA_VENDA' | i18n}} :</span>
+                      </div>
+                      <div fxFlex fxLayoutAlign.gt-xs="center center" fxLayoutAlign.lt-sm="start center"
+                           fxLayoutGap.lt-sm="1">
+                        {{element.quantidade}}
+                      </div>
+                    </div>
+                  </mat-cell>
+                </ng-container>
 
+                <ng-container matColumnDef="nomeProduto">
+                  <mat-header-cell fxFlex="15" class="style-header" fxHide.xs="true" fxLayoutAlign="none center"
+                                   *matHeaderCellDef> {{ 'LABEL_DATA_VENDA' | i18n}} </mat-header-cell>
+                  <mat-cell fxFlex="15" fxFlex.lt-sm="100" ngClass.gt-sm="style-column" fxLayoutAlign="start center"
+                            *matCellDef="let element">
+                    <div fxFlex fxLayout="row">
+                      <div fxFlex="130px" fxHide.gt-xs="true" fxLayoutAlign="end center">
+                        <span class="mat-body-strong text-right">{{ 'LABEL_DATA_VENDA' | i18n}} :</span>
+                      </div>
+                      <div fxFlex fxLayoutAlign.gt-xs="center center" fxLayoutAlign.lt-sm="start center"
+                           fxLayoutGap.lt-sm="1">
+                        {{element.nomeProduto}}
+                      </div>
+                    </div>
+                  </mat-cell>
+                </ng-container>
 
 
 

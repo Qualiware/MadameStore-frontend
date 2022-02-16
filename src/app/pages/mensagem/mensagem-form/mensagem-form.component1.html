@@ -69,8 +69,8 @@
                 "LABEL_SELECIONE" | i18n
               }}</mat-option>
               <mat-option
-                *ngFor="let produto of produto"
-                [value]="produto.id"
+                *ngFor="let produto of produtos"
+                [value]="produto"
               >
                 {{ produto.nome }}
               </mat-option>
@@ -149,6 +149,7 @@
             <mat-select
             placeholder="{{ 'LABEL_NOME_PRODUTO' | i18n }}"
             title="{{ 'LABEL_NOME_PRODUTO' | i18n }}"
+            [(ngModel)]="mensagem.tipo"
 
             [disabled]="acaoSistema.isAcaoVisualizar()"
             name="produto"

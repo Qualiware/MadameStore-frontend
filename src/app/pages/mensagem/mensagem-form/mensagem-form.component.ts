@@ -1,3 +1,4 @@
+import { TipoRetirada } from './../../../shared/app.constantes';
 /* tslint:disable:no-redundant-jsdoc */
 import {NgForm} from '@angular/forms';
 import {Component, OnInit, ViewChild} from '@angular/core';
@@ -27,7 +28,7 @@ export class MensagemFormComponent extends AbstractComponent  {
   public acaoSistema: AcaoSistema;
 
   public mensagem: any;
-  public produto: any[];
+  public produtos: any[];
   public submittedMensagem: boolean;
 
   public dataSourceTipoRetirada: MatTableDataSource<any>;
@@ -58,7 +59,7 @@ export class MensagemFormComponent extends AbstractComponent  {
     this.acaoSistema = new AcaoSistema(route);
 
 
-    this.produto = route.snapshot.data.produto;
+    this.produtos = route.snapshot.data.produto;
 
 
 
@@ -100,8 +101,18 @@ export class MensagemFormComponent extends AbstractComponent  {
     form.onSubmit(event);
     this.submittedMensagem = true;
 
+
     if (form.valid) {
 
+      mensagem = {
+        ...mensagem,
+        tipo: mensagem.tipo,
+        idProduto: mensagem.produto.id,
+        nomeProduto: mensagem.produto.nome
+      }
+
+      console.log(mensagem);
+      if(mensagem.quantidade<=mensagem.produto.quantidade || mensagem.tipo==5){
       this.mensagemClientService.salvar(mensagem).subscribe(() => {
 
           this.router.navigate(['/administracao/mensagem']);
@@ -109,7 +120,13 @@ export class MensagemFormComponent extends AbstractComponent  {
         }, error => {
           this.messageService.addMsgDanger(error);
         });
-    }
+
+  }
+
+  else
+  this.messageService.addMsgDanger("MSG048");
+}
+
   }
 
   /**

@@ -49,6 +49,7 @@ export class VendaClientService {
    */
   public salvar(venda: any): Observable<any> {
     let result: Observable<any> = null;
+    console.log(venda.statusEspera);
 
     if (venda.id) {
 
