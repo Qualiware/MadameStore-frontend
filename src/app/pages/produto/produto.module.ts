@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule } from '@angular/forms';
@@ -14,13 +15,20 @@ import { ProdutoFormComponent } from './produto-form/produto-form.component';
 import { ProdutoListComponent } from './produto-list/produto-list.component';
 import { ProdutoClientModule } from './shared/produto-client/produto-client.module';
 
+import { ProdutoRankingComponent } from './produto-ranking/produto-ranking.component';
+import { DxChartModule, DxFunnelModule, DxPieChartModule } from 'devextreme-angular';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ProdutoEstoquComponent } from './produto-estoque/produto-estoque.component';
+
 
 
 
 @NgModule({
   declarations: [
     ProdutoFormComponent,
-    ProdutoListComponent
+    ProdutoListComponent,
+    ProdutoRankingComponent,
+    ProdutoEstoquComponent
   ],
   entryComponents: [
   ],
@@ -33,7 +41,13 @@ import { ProdutoClientModule } from './shared/produto-client/produto-client.modu
     ValidationModule,
     ProdutoClientModule,
     NgxMaskModule.forRoot({}),
-    RouterModule.forChild(ProdutoRoutes)
-  ]
+    RouterModule.forChild(ProdutoRoutes),
+    DxPieChartModule,
+    DxChartModule,
+    DxFunnelModule,
+  ],
+  bootstrap: [ProdutoRankingComponent]
 })
 export class ProdutoModule { }
+
+platformBrowserDynamic().bootstrapModule(ProdutoModule);

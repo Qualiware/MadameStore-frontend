@@ -16,6 +16,9 @@ import {SecurityService} from '../../shared/security/security.service';
 })
 export class AdministracaoComponent {
 
+  public usuario;
+  public imagemPath;
+
   /**
    * Construtor da classe.
    *
@@ -27,7 +30,9 @@ export class AdministracaoComponent {
     private router: Router,
     private messageService: MessageService,
     public securityService: SecurityService,
-  ) { }
+  ) {
+    this.imagemPath='/assets/ICON.png';
+  }
 
 
   /**

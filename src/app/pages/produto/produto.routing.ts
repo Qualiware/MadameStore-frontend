@@ -1,3 +1,4 @@
+import { ProdutoClientService } from './shared/produto-client/produto-client.service';
 import {Routes} from '@angular/router';
 import {SecurityGuard} from '../../shared/security/security.guard';
 import { TipoProdutoListResolve } from '../tipo-produto/shared/tipo-amigo-client/tipo-produto-list.resolve';
@@ -5,8 +6,13 @@ import { TipoProdutoListResolve } from '../tipo-produto/shared/tipo-amigo-client
 
 import {ProdutoFormComponent} from './produto-form/produto-form.component';
 import {ProdutoListComponent} from './produto-list/produto-list.component';
+import { ProdutoRankingComponent } from './produto-ranking/produto-ranking.component';
 import { ProdutoListResolve } from './shared/produto-client/produto-list.resolve';
+//import { ProdutoRankingResolve } from './shared/produto-client/produto-ranking.resolve';
+
 import { ProdutoResolve } from './shared/produto-client/produto.resolve';
+import { ProdutoRankingResolve } from './shared/produto-client/produto-ranking.resolve';
+import { ProdutoEstoquComponent } from './produto-estoque/produto-estoque.component';
 
 
 
@@ -52,6 +58,28 @@ export const ProdutoRoutes: Routes = [
       produtos: ProdutoListResolve
     }
   },
+
+  {
+    path: 'ranking',
+    component: ProdutoRankingComponent,
+    resolve: {
+     // produtoRanking: ProdutoRankingResolve
+     produtos: ProdutoRankingResolve,
+     tipo: TipoProdutoListResolve,
+
+    }
+  },
+  {
+    path: 'tipo',
+    component: ProdutoRankingComponent,
+    resolve: {
+     // produtoRanking: ProdutoRankingResolve
+     produtos: ProdutoRankingResolve,
+     tipo: TipoProdutoListResolve,
+
+    }
+  },
+
   {
     path: ':id/alterar',
     component: ProdutoFormComponent,
@@ -94,5 +122,15 @@ export const ProdutoRoutes: Routes = [
     path: '',
     redirectTo: 'listar',
     pathMatch: 'full'
-  }
+  },
+
+  {
+    path: 'estoque',
+    component: ProdutoEstoquComponent,
+    resolve: {
+     // produtoRanking: ProdutoRankingResolve
+     produtos: ProdutoRankingResolve,
+
+    }
+  },
 ];

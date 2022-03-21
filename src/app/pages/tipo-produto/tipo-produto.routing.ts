@@ -7,12 +7,33 @@ import { TipoProdutoFormComponent } from './tipo-produto-form/tipo-produto-form.
 import { TipoProdutoListComponent } from './tipo-produto-list/tipo-produto-list.component';
 
 
+
+
 /**
  * Configurações de rota de Usuário.
  *
  * @author Guiliano Rangel (UEG)
  */
 export const TipoProdutoRoutes: Routes = [
+
+  {
+    path: 'consulta',
+    component: TipoProdutoListComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'visualizar',
+      security: {
+        roles: [
+          'ROLE_TIPOPRODUTO_VISUALIZAR'
+        ]
+      }
+    },
+    resolve: {
+      tipoProduto: TipoProdutoResolve,
+    }
+  },
   {
     path: 'incluir',
     component: TipoProdutoFormComponent,
@@ -28,6 +49,7 @@ export const TipoProdutoRoutes: Routes = [
       }
     },
   },
+
   {
     path: 'listar',
     component: TipoProdutoListComponent,

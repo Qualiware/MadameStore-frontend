@@ -7,6 +7,9 @@ import {MensagemFormComponent} from './mensagem-form/mensagem-form.component';
 import {MensagemListComponent} from './mensagem-list/mensagem-list.component';
 import { MensagemListResolve } from './shared/mensagem-list.resolve';
 import { MensagemResolve } from './shared/mensagem.resolve';
+import { MensagemTodosResolve } from './shared/mensagemtodos.resolve';
+
+
 
 
 
@@ -32,7 +35,7 @@ export const MensagemRoutes: Routes = [
       }
     },
     resolve: {
-      produto: ProdutoListResolve
+      produto: ProdutoListResolve,
     }
   },
 
@@ -69,7 +72,8 @@ export const MensagemRoutes: Routes = [
     },
     resolve: {
       mensagem: MensagemListResolve,
-      produto: ProdutoListResolve
+      produto: ProdutoListResolve,
+      mensagem1: MensagemTodosResolve
     }
   },
   {
@@ -88,7 +92,8 @@ export const MensagemRoutes: Routes = [
     },
     resolve: {
       mensagem: MensagemResolve,
-      produto: ProdutoListResolve
+      produto: ProdutoListResolve,
+      mensagem1: MensagemTodosResolve
     }
   },
   {
@@ -107,7 +112,8 @@ export const MensagemRoutes: Routes = [
     },
     resolve: {
       mensagem: MensagemResolve,
-      produto: ProdutoListResolve
+      produto: ProdutoListResolve,
+      mensagem1: MensagemTodosResolve
     }
   },
   {

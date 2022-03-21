@@ -250,7 +250,8 @@ export class VendaFormComponent {
       if (this.produtosVinculados.length > 0) {
 
         venda.itemVenda = this.produtosVinculados;
-       // console.log(venda);
+       console.log("Venda Envio",venda);
+
 
         this.vendaClientService.salvar(venda).subscribe(
           () => {

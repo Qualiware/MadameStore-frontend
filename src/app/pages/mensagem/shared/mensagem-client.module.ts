@@ -7,6 +7,8 @@ import { ProdutoListResolve } from '../../produto/shared/produto-client/produto-
 import { MensagemClientService } from './mensagem-client.service';
 import { MensagemResolve } from './mensagem.resolve';
 import { MensagemListResolve } from './mensagem-list.resolve';
+import { MensagemTodosResolve } from './mensagemtodos.resolve';
+
 
 /**
  * Modulo de integração do projeto frontend com os serviços backend.
@@ -20,6 +22,7 @@ import { MensagemListResolve } from './mensagem-list.resolve';
     MensagemClientService,
     MensagemResolve,
     MensagemListResolve,
+    MensagemTodosResolve,
     ProdutoListResolve
   ]
 })

@@ -1,3 +1,4 @@
+import { ProdutoRankingResolve } from './produto-ranking.resolve';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
@@ -6,6 +7,7 @@ import {ProdutoClientService} from './produto-client.service';
 
 import {ProdutoListResolve} from './produto-list.resolve';
 import { TipoProdutoListResolve } from 'src/app/pages/tipo-produto/shared/tipo-amigo-client/tipo-produto-list.resolve';
+
 
 
 /**
@@ -20,7 +22,8 @@ import { TipoProdutoListResolve } from 'src/app/pages/tipo-produto/shared/tipo-a
     ProdutoClientService,
     ProdutoResolve,
     TipoProdutoListResolve,
-    ProdutoListResolve
+    ProdutoListResolve,
+    ProdutoRankingResolve
   ]
 })
 export class ProdutoClientModule { }

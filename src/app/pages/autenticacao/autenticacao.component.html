@@ -40,9 +40,11 @@
               placeholder="{{ 'LABEL_INFORME_SENHA' | i18n }}"
               maxlength="20"
             />
-            <mat-error validationMessage [submitted]="submitted"></mat-error>
-          </mat-form-field>
 
+            <mat-error validationMessage [submitted]="submitted"></mat-error>
+
+          </mat-form-field>
+          <a  href="http://localhost:4200/acesso/recuperar-senha" target="_blank" rel="noreferrer">Redefinir a Senha</a>
           <button
             mat-raised-button
             color="primary"

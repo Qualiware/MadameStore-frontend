@@ -1,3 +1,4 @@
+import { ProdutoResolve } from './../produto/shared/produto-client/produto.resolve';
 import { ClienteListResolve } from './../cliente/shared/cliente-client/cliente-list.resolve';
 import { ItemVendaClientResolve } from './../../shared/services/item-venda-client/item-venda-client.resolve';
 import {Routes} from '@angular/router';
@@ -7,6 +8,16 @@ import {VendaFormComponent} from './venda-form/venda-form.component';
 import {VendaListComponent} from './venda-list/venda-list.component';
 import { VendaListResolve } from './shared/venda-client/venda-list.resolve';
 import { VendaResolve } from './shared/venda-client/venda.resolve';
+import { VendaPorcentagemClient } from './venda-porcentagem-client/venda-porcentagem-client';
+import { VendaPorcentagemClienteComponent } from './venda-porcentagem-client/venda-porcentagem-client.component';
+import { VendaPorcentagemClientResolve } from './shared/venda-client/venda-porcentagem-client.resolve';
+import { VendaConsultaComponent } from './venda-consulta/venda-consulta.component';
+import { VendaConsultaMComponent } from './venda-consultam/venda-consulta.component';
+import { VendaConsultaClienteComponent } from './venda-consultacliente/venda-consultacliente.component';
+import { VendaIndividualClienteComponent } from './venda-consultaindividual/venda-consultacliente.component';
+import { VendaProdutoComponent } from './venda-tipoProduto/venda-consulta.component';
+import { RelatorioVendaComponent } from './venda-relatorio/relatorio.component';
+
 
 
 
@@ -117,5 +128,146 @@ export const VendaRoutes: Routes = [
 
       clientes: ClienteListResolve
     }
-  }
+  },
+  {
+    path: 'porcentagemClient',
+    component: VendaPorcentagemClienteComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'visualizar',
+      security: {
+        roles: [
+          'ROLE_VENDA_VISUALIZAR'
+        ]
+      }
+    },
+    resolve: {
+      venda: VendaPorcentagemClientResolve,
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve
+    }
+  },
+
+  {
+    path: 'consulta',
+    component: VendaConsultaComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'visualizar',
+      security: {
+        roles: [
+          'ROLE_VENDA_VISUALIZAR'
+        ]
+      }
+    },
+    resolve: {
+      venda: VendaPorcentagemClientResolve,
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve,
+    }
+  },
+  {
+    path: 'consultam',
+    component: VendaConsultaMComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'visualizar',
+      security: {
+        roles: [
+          'ROLE_VENDA_VISUALIZAR'
+        ]
+      }
+    },
+    resolve: {
+      venda: VendaPorcentagemClientResolve,
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve,
+    }
+  },
+  {
+    path: 'consultacliente',
+    component: VendaConsultaClienteComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'visualizar',
+      security: {
+        roles: [
+          'ROLE_VENDA_VISUALIZAR'
+        ]
+      }
+    },
+    resolve: {
+      venda: VendaPorcentagemClientResolve,
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve,
+    }
+  },
+  {
+    path: 'consultaindividual',
+    component: VendaIndividualClienteComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'visualizar',
+      security: {
+        roles: [
+          'ROLE_VENDA_VISUALIZAR'
+        ]
+      }
+    },
+    resolve: {
+      venda: VendaPorcentagemClientResolve,
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve,
+    }
+  },
+  {
+    path: 'vendaTipo',
+    component: VendaProdutoComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'visualizar',
+      security: {
+        roles: [
+          'ROLE_VENDA_VISUALIZAR'
+        ]
+      }
+    },
+    resolve: {
+      venda: VendaPorcentagemClientResolve,
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve,
+    }
+  },
+  {
+    path: 'relatorio',
+    component: RelatorioVendaComponent,
+    canActivate: [
+      SecurityGuard
+    ],
+    data: {
+      acao: 'visualizar',
+      security: {
+        roles: [
+          'ROLE_VENDA_VISUALIZAR'
+        ]
+      }
+    },
+    resolve: {
+      venda: VendaPorcentagemClientResolve,
+      itemVenda: ItemVendaClientResolve,
+      clientes: ClienteListResolve,
+    }
+  },
 ];

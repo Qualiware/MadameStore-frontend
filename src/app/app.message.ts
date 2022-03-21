@@ -14,7 +14,10 @@ export class AppMessage implements InternacionalizacaoResource {
   constructor() {
     this.resource = {
       // LABEL
-
+      LABEL_FILTRAR: "Filtrar",
+      LABEL_DATAFINAL:"Data do fim",
+      LABEL_DATAINICIAL:"Data de inicio",
+      LABEL_VALOR:"O valor total do estoque é:",
       LABEL_OK: "OK",
       LABEL_SAIR: "Sair",
       LABEL_SIM: "Sim",
@@ -72,6 +75,17 @@ export class AppMessage implements InternacionalizacaoResource {
 
       LABEL_ADICIONAR_RETIRAR: "Retirar produto",
 
+      //relatorio
+      LABEL_RELATORIO_VENDA_DIA: "Vendas diarias",
+      LABEL_RELATORIO_VENDA_MES: "Vendas por mês",
+      LABEL_RELATORIO_CLIENTES: "Clientes",
+      LABEL_RELATORIO_CLIENTES_INDIVIDUAL: "Clientes individual",
+      LABEL_RELATORIO_TIPO_PRODUTO: "Tipo produto",
+
+      // mensagem tabela alteracao
+      LABEL_DATA_ALTERACAO: "Data da alteração",
+      LABEL_PRODUTO_ALTERACAO: "Produto",
+      LABEL_QUANTIDADE_ALTERACAO: "Quantidade alterada",
       // Mensagem sitema
       MSG_DESEJA_SAIR_SISTEMA: "Deseja sair do sistema?",
 

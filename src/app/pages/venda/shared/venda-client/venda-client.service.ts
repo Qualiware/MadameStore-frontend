@@ -41,6 +41,16 @@ export class VendaClientService {
     });
   }
 
+  /**
+   * Retorna o array de Venda confome o filtro de pesquisa informado.
+   *
+   * @param filtroDTO
+   */
+   public getCliente(): Observable<any> {
+    return this.http.get(`${environment.urlApi}/venda/vendasClientes`, {
+    });
+  }
+
 
   /**
    * Salva a instância de venda.

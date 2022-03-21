@@ -101,4 +101,14 @@ export class ProdutoClientService {
     return this.http.get(`${environment.urlApi}/produto/ativos`);
   }
 
+    /**
+   * Retorna a lista de Grupos Ativos.
+   *
+   * @param idSistema
+   */
+     public getRanking(): Observable<any> {
+      return this.http.get(`${environment.urlApi}/produto/ranking`);
+    }
+
+
 }

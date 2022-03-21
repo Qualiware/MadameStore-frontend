@@ -105,9 +105,8 @@
               matInput
               placeholder="{{ 'LABEL_INFORME_DESCRICAO' | i18n }}"
               title="{{ 'LABEL_DESCRICAO' | i18n }}"
-              [(ngModel)]="mensagem.descricao"
+              [(ngModel)]="mensagem.descricaoMensagem"
               name="descricao"
-              maxlength="20"
               [disabled]="acaoSistema.isAcaoVisualizar()"
             />
           </mat-form-field>

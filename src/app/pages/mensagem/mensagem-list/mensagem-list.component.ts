@@ -28,6 +28,8 @@ export class MensagemListComponent extends AbstractComponent implements OnInit {
 
   public filtroDTO: FiltroMensagemDTO;
 
+  public m: any[];
+
   public dataSource: MatTableDataSource<any>;
 
   public dataAlteracao: Date = null;
@@ -56,9 +58,10 @@ export class MensagemListComponent extends AbstractComponent implements OnInit {
     private mensagemClientService: MensagemClientService
   ) {
     super();
-    const mensagem = route.snapshot.data.mensagem;
-    console.log(mensagem);
-    this.dataSource = new MatTableDataSource<any>(mensagem);
+    this.m = route.snapshot.data.mensagem;
+    let m= route.snapshot.data.mensagem1;
+    console.log(m);
+    this.dataSource = new MatTableDataSource<any>(m);
     this.produtos= route.snapshot.data.produtos;
   }
 

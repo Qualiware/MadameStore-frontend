@@ -4,5 +4,5 @@ export const environment = {
   // linux: /etc/hosts
   // entrada: xxx.xxx.xxx.xxx dev.local
     production: true,
-    urlApi: 'http://dev.local/modelo-api/api/v1'
+    urlApi: 'localhost:8081/modelo-api/api/v1'
 };

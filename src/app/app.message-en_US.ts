@@ -15,6 +15,9 @@ export class AppMessage implements InternacionalizacaoResource {
   constructor() {
     this.resource = {
       // LABEL
+      LABEL_DATAFINAL:'Data do fim',
+      LABEL_DATAINICIAL:'Data de inicio',
+      LABEL_VALOR:'O valor total do estoque é:',
       LABEL_OK: 'OK',
       LABEL_SAIR: 'Sair',
       LABEL_SIM: 'Sim',
@@ -27,6 +30,7 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_PESQUISAR: 'Pesquisar',
       LABEL_LIMPAR: 'Limpar',
       LABEL_SALVAR: 'Salvar',
+      LABEL_FILTRAR: 'Filtrar',
       LABEL_CANCELAR: 'Cancelar',
       LABEL_VOLTAR: 'Voltar',
       LABEL_LOGIN: 'Login',
@@ -53,8 +57,12 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_EXPORTAR: 'Exportar',
       LABEL_SELECIONE: 'Selecione',
 
-
-
+      //relatorio
+      LABEL_RELATORIO_VENDA_DIA: 'Vendas diarias',
+      LABEL_RELATORIO_VENDA_MES: 'Vendas por mês',
+      LABEL_RELATORIO_CLIENTES: 'Clientes',
+      LABEL_RELATORIO_CLIENTES_INDIVIDUAL: 'Clientes individual',
+      LABEL_RELATORIO_TIPO_PRODUTO: 'Tipo produto',
 
       // Mensagem sitema
       MSG_DESEJA_SAIR_SISTEMA: 'Deseja sair do sistema?',
@@ -160,6 +168,10 @@ export class AppMessage implements InternacionalizacaoResource {
       PAGINATOR_ULTIMA_PAGINA: 'Última página',
       PAGINATOR_PRIMEIRA_PAGINA: 'Primeira página',
 
+      // MENSAGEM TABELA ALTERACAO
+      LABEL_DATA_ALTERACAO: 'Data da alteração',
+      LABEL_PRODUTO_ALTERACAO: 'Produto',
+      LABEL_QUANTIDADE_ALTERACAO: 'Quantidade alterada',
       // MSG
       ME001: 'Erro Inesperado.',
       ME002: 'Token inválido.',

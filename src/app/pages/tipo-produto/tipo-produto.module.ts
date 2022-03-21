@@ -14,11 +14,14 @@ import {TipoProdutoFormComponent} from './tipo-produto-form/tipo-produto-form.co
 import {TipoProdutoListComponent} from './tipo-produto-list/tipo-produto-list.component';
 import { TipoProdutoClientModule } from './shared/tipo-amigo-client/tipo-produto-client.module';
 
+import { DxChartModule, DxFunnelModule, DxPieChartModule } from 'devextreme-angular';
+
+
 
 @NgModule({
   declarations: [
     TipoProdutoFormComponent,
-    TipoProdutoListComponent
+    TipoProdutoListComponent,
   ],
   entryComponents: [
   ],
@@ -31,7 +34,10 @@ import { TipoProdutoClientModule } from './shared/tipo-amigo-client/tipo-produto
     ValidationModule,
     TipoProdutoClientModule,
     NgxMaskModule.forRoot({}),
-    RouterModule.forChild(TipoProdutoRoutes)
+    RouterModule.forChild(TipoProdutoRoutes),
+    DxPieChartModule,
+    DxChartModule,
+    DxFunnelModule
   ]
 })
 export class TipoProdutoModule { }

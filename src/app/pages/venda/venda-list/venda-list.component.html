@@ -121,7 +121,7 @@
               <mat-table #table [dataSource]="dataSource">
 
                 <ng-container matColumnDef="valorTotal">
-                  <mat-header-cell class="style-header" fxHide.xs="true" fxLayoutAlign="start center"
+                  <mat-header-cell class="style-header" fxHide.xs="true"
                                    *matHeaderCellDef> {{ 'LABEL_VALORTOTAL' | i18n}} </mat-header-cell>
                   <mat-cell fxFlex.lt-sm="100" ngClass.gt-sm="style-column" fxLayoutAlign="start center"
                             *matCellDef="let element">
@@ -137,7 +137,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="quantidade">
-                  <mat-header-cell class="style-header" fxHide.xs="true" fxLayoutAlign="start center"
+                  <mat-header-cell  class="style-header" fxHide.xs="true" fxLayoutAlign="start center"
                                    *matHeaderCellDef> {{ 'LABEL_NOME_CLIENTE' | i18n}} </mat-header-cell>
                   <mat-cell fxFlex.lt-sm="100" ngClass.gt-sm="style-column" fxLayoutAlign="start center"
                             *matCellDef="let element">
@@ -153,7 +153,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="dataVenda">
-                  <mat-header-cell fxFlex="15" class="style-header" fxHide.xs="true" fxLayoutAlign="none center"
+                  <mat-header-cell fxFlex="12" class="style-header" fxHide.xs="true" fxLayoutAlign="none center"
                                    *matHeaderCellDef> {{ 'LABEL_DATAVENDA' | i18n}} </mat-header-cell>
                   <mat-cell fxFlex="15" fxFlex.lt-sm="100" ngClass.gt-sm="style-column" fxLayoutAlign="start center"
                             *matCellDef="let element">
@@ -170,7 +170,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="statusEspera">
-                  <mat-header-cell fxFlex.gt-sm="100px" class="style-header" fxLayoutAlign="center center"
+                  <mat-header-cell fxFlex="14" class="style-header" fxLayoutAlign="center center"
                                    *matHeaderCellDef>{{ 'LABEL_STATUS_ESPERA' | i18n}}  </mat-header-cell>
                   <mat-cell fxFlex.gt-sm="100px" fxFlex.lt-sm="100" ngClass.gt-sm="style-column"
                             fxLayoutAlign="center center" *matCellDef="let element">
@@ -194,7 +194,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="statusVendido">
-                  <mat-header-cell fxFlex.gt-sm="100px" class="style-header" fxLayoutAlign="center center"
+                  <mat-header-cell fxFlex.gt-sm="120px" class="style-header" fxLayoutAlign="center center"
                                    *matHeaderCellDef>{{ 'LABEL_STATUS_VENDIDO' | i18n}}  </mat-header-cell>
                   <mat-cell fxFlex.gt-sm="100px" fxFlex.lt-sm="100" ngClass.gt-sm="style-column"
                             fxLayoutAlign="center center" *matCellDef="let element">

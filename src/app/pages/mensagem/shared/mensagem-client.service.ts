@@ -103,4 +103,16 @@ export class MensagemClientService {
     return this.http.put(`${environment.urlApi}/mensagem/${id}/deixar-mensagemespera`, {});
   }
 
+
+
+    /**
+   * Retorna a lista de Grupos Ativos.
+   *
+   * @param idSistema
+   */
+     public getTodos(): Observable<any> {
+      return this.http.get(`${environment.urlApi}/mensagem/mensagemClientes`);
+    }
+
+
 }

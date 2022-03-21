@@ -110,7 +110,7 @@
               name="quantidade"
               required
               maxlength="20"
-              [disabled]="acaoSistema.isAcaoVisualizar()"
+              [disabled]="acaoSistema.isAcaoVisualizar() || acaoSistema.isAcaoAlterar()"
             />
             <mat-error
               validationMessage
